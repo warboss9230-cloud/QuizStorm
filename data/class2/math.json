@@ -1,0 +1,12 @@
+[
+  {"question":"What is 12 + 15?","option1":"25","option2":"27","option3":"26","option4":"28","answer":"option2","level":1,"hint":"Add tens then units"},
+  {"question":"What is 30 - 14?","option1":"14","option2":"18","option3":"16","option4":"20","answer":"option3","level":1,"hint":"Borrow from tens place"},
+  {"question":"What is 4 × 3?","option1":"10","option2":"14","option3":"12","option4":"7","answer":"option3","level":2,"hint":"4 groups of 3"},
+  {"question":"What is 20 ÷ 4?","option1":"4","option2":"6","option3":"8","option4":"5","answer":"option4","level":2,"hint":"How many 4s make 20?"},
+  {"question":"What is 5 × 5?","option1":"20","option2":"30","option3":"25","option4":"15","answer":"option3","level":2,"hint":"Five fives"},
+  {"question":"What is half of 18?","option1":"8","option2":"10","option3":"9","option4":"6","answer":"option3","level":2,"hint":"18 divided by 2"},
+  {"question":"What is 100 - 37?","option1":"63","option2":"73","option3":"53","option4":"67","answer":"option1","level":3,"hint":"100 minus 37"},
+  {"question":"What is 7 × 8?","option1":"54","option2":"56","option3":"48","option4":"64","answer":"option2","level":3,"hint":"7 times 8"},
+  {"question":"What is 45 + 38?","option1":"83","option2":"73","option3":"93","option4":"80","answer":"option1","level":3,"hint":"Add and carry"},
+  {"question":"What comes next: 2, 4, 6, 8, ___?","option1":"9","option2":"11","option3":"10","option4":"12","answer":"option3","level":1,"hint":"Even numbers"}
+]
