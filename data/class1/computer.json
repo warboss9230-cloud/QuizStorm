@@ -1,0 +1,12 @@
+[
+  {"question":"What does CPU stand for?","option1":"Central Processing Unit","option2":"Computer Power Unit","option3":"Central Program Utility","option4":"Computing Process Unit","answer":"option1","level":1,"hint":"The brain of the computer"},
+  {"question":"Which device is used to type text?","option1":"Mouse","option2":"Monitor","option3":"Keyboard","option4":"Speaker","answer":"option3","level":1,"hint":"Has letters and numbers on it"},
+  {"question":"What does 'www' stand for?","option1":"World Wide Web","option2":"Wide World Web","option3":"World Web Wide","option4":"Web World Wide","answer":"option1","level":2,"hint":"The internet prefix"},
+  {"question":"Which is an input device?","option1":"Printer","option2":"Monitor","option3":"Speaker","option4":"Keyboard","answer":"option4","level":1,"hint":"You use it to give data to the computer"},
+  {"question":"How many bits are in a byte?","option1":"4","option2":"16","option3":"8","option4":"2","answer":"option3","level":2,"hint":"Binary unit"},
+  {"question":"What does RAM stand for?","option1":"Random Access Memory","option2":"Read Access Memory","option3":"Run All Memory","option4":"Random Array Memory","answer":"option1","level":2,"hint":"Temporary computer memory"},
+  {"question":"Which key is used to delete text?","option1":"Enter","option2":"Backspace","option3":"Shift","option4":"Ctrl","answer":"option2","level":1,"hint":"Goes backwards"},
+  {"question":"What is the full form of USB?","option1":"Universal Serial Bus","option2":"Unit Serial Bus","option3":"Universal System Bus","option4":"Unified Serial Bus","answer":"option1","level":2,"hint":"Used to connect devices"},
+  {"question":"What shape is the recycle bin icon?","option1":"Square","option2":"Circle","option3":"Bin/Trash can","option4":"Triangle","answer":"option3","level":1,"hint":"Where deleted files go"},
+  {"question":"Which company made Windows?","option1":"Apple","option2":"Google","option3":"Microsoft","option4":"IBM","answer":"option3","level":2,"hint":"Bill Gates founded it"}
+]
