@@ -9,105 +9,129 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
-
 <canvas id="bg-canvas"></canvas>
-
 <div id="app">
 
   <!-- ===== HOME SCREEN ===== -->
   <div id="screen-home" class="screen active">
 
-    <!-- Top Bar: Player name left, Hamburger right -->
+    <!-- TOP BAR: Player left | Nav icons + Hamburger right -->
     <div class="top-bar">
-      <div class="player-topbar" id="player-topbar">
+      <div class="player-topbar" id="player-topbar" onclick="openProfile()">
         <span id="topbar-avatar">🦊</span>
         <div>
-          <div id="topbar-name" style="font-weight:900;font-size:0.95rem;line-height:1.1">Guest</div>
-          <div id="topbar-xp" style="font-size:0.7rem;color:var(--accent)">⚡ 0 XP</div>
+          <div id="topbar-name">Guest</div>
+          <div id="topbar-xp">⚡ 0 XP</div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:0.5rem">
-        <span id="topbar-time" style="font-size:0.72rem;color:var(--text2);font-weight:700"></span>
-        <button class="icon-btn" id="hamburger-btn" onclick="toggleHamburger()">☰</button>
+      <div class="top-right-icons">
+        <button class="icon-btn" title="Top 10" onclick="renderLeaderboard()">🏆</button>
+        <button class="icon-btn" title="Dashboard" onclick="renderDashboard()">📊</button>
+        <button class="icon-btn" title="Badges" onclick="renderBadgesScreen()">🎖️</button>
+        <span id="topbar-time"></span>
+        <button class="icon-btn" onclick="toggleHamburger()">☰</button>
       </div>
     </div>
 
-    <!-- Logo -->
+    <!-- LOGO -->
     <div class="logo-section">
       <div class="logo-text">QuizStorm ⚡</div>
       <div class="logo-sub">Learn · Compete · Excel</div>
     </div>
 
-    <!-- Stats Row -->
+    <!-- STATS -->
     <div class="stats-row">
-      <div class="stat-chip">
-        <span class="val" id="stat-streak">0</span>
-        <span class="lbl">Streak 🔥</span>
-      </div>
-      <div class="stat-chip">
-        <span class="val" id="stat-xp">0</span>
-        <span class="lbl">XP ⚡</span>
-      </div>
-      <div class="stat-chip">
-        <span class="val" id="stat-badges">0</span>
-        <span class="lbl">Badges 🎖️</span>
-      </div>
-      <div class="stat-chip">
-        <span class="val" id="stat-games">0</span>
-        <span class="lbl">Games 🎮</span>
-      </div>
+      <div class="stat-chip"><span class="val" id="stat-streak">0</span><span class="lbl">Streak 🔥</span></div>
+      <div class="stat-chip"><span class="val" id="stat-xp">0</span><span class="lbl">XP ⚡</span></div>
+      <div class="stat-chip"><span class="val" id="stat-badges">0</span><span class="lbl">Badges 🎖️</span></div>
+      <div class="stat-chip"><span class="val" id="stat-games">0</span><span class="lbl">Games 🎮</span></div>
     </div>
 
-    <!-- ⚡ Daily Challenge Banner (Large, on Home) -->
+    <!-- DAILY CHALLENGE BANNER -->
     <div class="daily-home-banner" id="daily-home-banner" onclick="renderDailyChallenge()">
       <div class="dhb-left">
         <div class="dhb-icon">🗓️</div>
         <div>
           <div class="dhb-title">Daily Challenge</div>
-          <div class="dhb-sub">+50 Bonus XP • Once per day</div>
+          <div class="dhb-sub">+50 Bonus XP &bull; Once per day</div>
         </div>
       </div>
       <div class="dhb-arrow">▶</div>
     </div>
 
-    <!-- Game Mode Select (on Home) -->
-    <div class="section-label" style="margin-top:0.5rem">Select Game Mode</div>
-    <div class="mode-grid" id="home-mode-grid">
-      <div class="mode-card selected" data-mode="free">
-        <div class="m-icon">🎮</div>
-        <div class="m-name">Free Play</div>
-        <div class="m-desc">No time limit</div>
+    <!-- GAME MODE (same style as Daily Challenge - expandable cards, no separate button) -->
+    <div class="section-label" style="margin-top:0.75rem">Select Game Mode</div>
+    <div class="game-mode-list" id="home-mode-grid">
+      <div class="gm-card selected" data-mode="free">
+        <div class="gm-left"><div class="gm-icon">🎮</div><div><div class="gm-name">Free Play</div><div class="gm-desc">No time limit. Relax and learn!</div></div></div>
+        <div class="gm-check">✓</div>
       </div>
-      <div class="mode-card" data-mode="timer">
-        <div class="m-icon">⏱️</div>
-        <div class="m-name">Timer Mode</div>
-        <div class="m-desc">30s per question</div>
+      <div class="gm-card" data-mode="timer">
+        <div class="gm-left"><div class="gm-icon">⏱️</div><div><div class="gm-name">Timer Mode</div><div class="gm-desc">30 seconds per question</div></div></div>
+        <div class="gm-check">✓</div>
       </div>
-      <div class="mode-card" data-mode="challenge">
-        <div class="m-icon">💀</div>
-        <div class="m-name">Challenge</div>
-        <div class="m-desc">3 lives only</div>
+      <div class="gm-card" data-mode="challenge">
+        <div class="gm-left"><div class="gm-icon">💀</div><div><div class="gm-name">Challenge</div><div class="gm-desc">3 lives — don't mess up!</div></div></div>
+        <div class="gm-check">✓</div>
       </div>
-      <div class="mode-card" data-mode="pvp">
-        <div class="m-icon">⚔️</div>
-        <div class="m-name">Player VS Player</div>
-        <div class="m-desc">Battle a friend</div>
+      <div class="gm-card" data-mode="pvp">
+        <div class="gm-left"><div class="gm-icon">⚔️</div><div><div class="gm-name">Player VS Player</div><div class="gm-desc">Battle a friend on same device</div></div></div>
+        <div class="gm-check">✓</div>
       </div>
     </div>
 
-    <!-- START QUIZ Button -->
-    <button class="btn btn-primary" id="btn-start" style="margin-top:0.75rem"
-      onclick="handleHomeStart()">
-      ⚡ START QUIZ
-    </button>
+    <!-- START BUTTON -->
+    <button class="btn btn-primary" id="btn-start" style="margin-top:0.75rem" onclick="handleHomeStart()">⚡ START QUIZ</button>
 
-    <!-- Quick Nav Row -->
-    <div class="quick-nav-row">
-      <button class="qnav-btn" onclick="renderLeaderboard()">🏆<span>Top 10</span></button>
-      <button class="qnav-btn" onclick="renderDashboard()">📊<span>Dashboard</span></button>
-      <button class="qnav-btn" onclick="renderBadgesScreen()">🎖️<span>Badges</span></button>
+    <!-- BG ANIMATION SWITCHER -->
+    <div class="bg-switcher">
+      <span class="bg-sw-label">🎨 Background</span>
+      <div class="bg-sw-btns" id="bg-sw-btns"></div>
     </div>
 
+  </div>
+
+  <!-- ===== PLAYER PROFILE SCREEN ===== -->
+  <div id="screen-profile" class="screen">
+    <div class="screen-header">
+      <button class="back-btn" onclick="renderHome()">←</button>
+      <div class="screen-title">Player Profile</div>
+    </div>
+
+    <!-- Profile Hero -->
+    <div class="profile-hero" id="profile-hero">
+      <div class="profile-hero-avatar" id="profile-hero-avatar">🦊</div>
+      <div class="profile-hero-name" id="profile-hero-name">Guest</div>
+      <div class="profile-hero-xp" id="profile-hero-xp">⚡ 0 XP</div>
+      <button class="profile-edit-btn" id="profile-edit-btn" onclick="toggleProfileEdit()">✏️ Edit</button>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="result-stats" style="margin-bottom:1rem">
+      <div class="res-stat xp"><div class="rv" id="profile-xp">0</div><div class="rl">Total XP ⚡</div></div>
+      <div class="res-stat correct"><div class="rv" id="profile-streak" style="color:var(--accent2)">0</div><div class="rl">Best Streak 🔥</div></div>
+      <div class="res-stat"><div class="rv" id="profile-games" style="color:var(--blue)">0</div><div class="rl">Games 🎮</div></div>
+    </div>
+    <div class="card" style="text-align:center;padding:0.75rem;margin-bottom:1rem">
+      <div style="font-size:0.75rem;color:var(--text2);margin-bottom:0.2rem">Badges Earned</div>
+      <div id="profile-badges-row" style="display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:center;margin-top:0.4rem"></div>
+    </div>
+
+    <!-- Edit Panel (hidden by default) -->
+    <div class="profile-edit-panel" id="profile-edit-panel" style="display:none">
+      <div class="section-label">Change Avatar</div>
+      <div class="avatar-grid" id="avatar-grid"></div>
+      <div class="name-row" style="margin-top:0.75rem">
+        <input type="text" class="name-input" id="name-input" placeholder="Your name..." maxlength="20"
+          onkeydown="if(event.key==='Enter')saveCurrentName()">
+        <button class="btn btn-sm btn-primary" onclick="saveCurrentName()" style="width:auto;padding:0.7rem 1rem">Save</button>
+      </div>
+    </div>
+
+    <!-- Switch Player -->
+    <div class="section-label" style="margin-top:0.75rem">Switch Player</div>
+    <div id="players-chips" class="players-chips"></div>
+    <button class="btn btn-secondary" style="margin-top:0.5rem" onclick="openAddPlayer()">➕ Add New Player</button>
   </div>
 
   <!-- ===== CLASS SELECT ===== -->
@@ -125,87 +149,53 @@
       <button class="back-btn" onclick="renderClassSelect()">←</button>
       <div class="screen-title" id="subject-screen-title">Select Subject</div>
     </div>
-    <div class="section-label" id="subject-title">Select Subject — Class 1</div>
+    <div class="section-label" id="subject-title">Select Subject</div>
     <div class="subject-grid" id="subject-grid"></div>
-    <!-- Mix Panel -->
     <div class="mix-panel" id="mix-panel">
       <div class="section-label">Select subjects:</div>
       <div id="mix-subject-list"></div>
       <div class="mix-count-row" style="margin-top:0.75rem">
         <label>Questions:</label>
-        <input type="range" class="range-input" id="mix-count" min="5" max="30" value="10">
-        <span class="mix-count-val" id="mix-count-val">10</span>
+        <input type="range" class="range-input" id="mix-count" min="20" max="200" step="10" value="20">
+        <span class="mix-count-val" id="mix-count-val">20</span>
       </div>
       <button class="btn btn-purple" onclick="startMixQuiz()" style="margin-top:0.5rem">🎲 Start Mix Quiz</button>
     </div>
   </div>
 
-  <!-- ===== LEVEL SELECT (only for Level Mode) ===== -->
-  <div id="screen-level" class="screen">
-    <div class="screen-header">
-      <button class="back-btn" onclick="renderSubjectSelect()">←</button>
-      <div class="screen-title">Select Level</div>
-    </div>
-    <div class="section-label">Choose Difficulty Level</div>
-    <div class="level-grid" id="level-grid-screen"></div>
-    <button class="btn btn-primary" style="margin-top:1rem" onclick="startQuiz()">📈 Start Level Quiz</button>
-  </div>
-
   <!-- ===== QUIZ SCREEN ===== -->
   <div id="screen-quiz" class="screen">
-    <!-- Player Name Top Left in Quiz -->
     <div class="quiz-player-bar">
-      <div class="quiz-player-info">
-        <span id="quiz-player-avatar">🦊</span>
-        <span id="quiz-player-name" style="font-weight:800;font-size:0.85rem"></span>
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <span id="quiz-player-avatar" style="font-size:1.4rem">🦊</span>
+        <span id="quiz-player-name" style="font-weight:800;font-size:0.88rem"></span>
       </div>
-      <button class="back-btn" onclick="if(confirm('Quit quiz?')){QSecurity.stopQuiz();clearInterval(state.timerInterval);renderHome()}" style="width:32px;height:32px;font-size:0.85rem">✕</button>
+      <button class="back-btn" style="width:32px;height:32px;font-size:0.85rem"
+        onclick="if(confirm('Quit quiz?')){QSecurity.stopQuiz();clearInterval(state.timerInterval);renderHome()}">✕</button>
     </div>
-
-    <!-- Turn Banner (2-player) -->
     <div class="turn-banner" id="turn-banner"></div>
-
-    <!-- Top Row -->
     <div class="quiz-top">
-      <span class="q-counter" id="q-counter">Question 1/10</span>
+      <span class="q-counter" id="q-counter">Q 1/10</span>
       <span class="xp-display" id="xp-display">⚡ 0 XP</span>
       <div class="lives-row" id="lives-row"></div>
     </div>
-
-    <!-- Progress Bar -->
-    <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
-    </div>
-
-    <!-- Timer Bar -->
-    <div class="timer-bar-wrap" id="timer-bar-wrap">
-      <div class="timer-bar-fill" id="timer-bar-fill" style="width:100%"></div>
-    </div>
-
-    <!-- Streak Pill -->
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="timer-bar-wrap" id="timer-bar-wrap"><div class="timer-bar-fill" id="timer-bar-fill" style="width:100%"></div></div>
     <div class="streak-pill hidden" id="streak-pill">🔥 0 Streak</div>
-
-    <!-- Question Card -->
-    <div class="question-card">
-      <div class="question-text" id="question-text">Loading question...</div>
-    </div>
-
-    <!-- Options Grid -->
+    <div class="question-card"><div class="question-text" id="question-text">Loading...</div></div>
     <div class="options-grid">
       <button class="option-btn" id="opt-0"><span class="opt-label">A</span><span class="opt-text"></span></button>
       <button class="option-btn" id="opt-1"><span class="opt-label">B</span><span class="opt-text"></span></button>
       <button class="option-btn" id="opt-2"><span class="opt-label">C</span><span class="opt-text"></span></button>
       <button class="option-btn" id="opt-3"><span class="opt-label">D</span><span class="opt-text"></span></button>
     </div>
-
-    <!-- Actions -->
     <div id="quiz-actions-wrap" class="quiz-actions">
       <button class="hint-btn" id="hint-btn" onclick="useHint()">💡 Hint (-3 XP)</button>
       <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next →</button>
     </div>
   </div>
 
-  <!-- ===== RESULTS SCREEN ===== -->
+  <!-- ===== RESULTS ===== -->
   <div id="screen-results" class="screen">
     <div class="result-hero">
       <div class="result-avatar" id="res-avatar">🦊</div>
@@ -215,10 +205,10 @@
     <div class="result-stats">
       <div class="res-stat correct"><div class="rv" id="res-correct">0</div><div class="rl">Correct ✅</div></div>
       <div class="res-stat wrong"><div class="rv" id="res-wrong">0</div><div class="rl">Wrong ❌</div></div>
-      <div class="res-stat xp"><div class="rv" id="res-xp">+0</div><div class="rl">XP Earned ⚡</div></div>
+      <div class="res-stat xp"><div class="rv" id="res-xp">+0</div><div class="rl">XP ⚡</div></div>
     </div>
     <div class="card" style="text-align:center;margin-bottom:0.75rem">
-      <div id="res-streak" style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">🔥 0 Streak</div>
+      <div id="res-streak" style="font-weight:800;font-size:1rem">🔥 0 Streak</div>
     </div>
     <div class="badge-earned" id="badge-earned">
       <div class="be-label">🎉 New Badge Earned!</div>
@@ -228,8 +218,8 @@
     <div class="battle-result" id="battle-result">
       <div class="battle-vs">VS</div>
       <div class="battle-players">
-        <div class="battle-player"><div class="bp-avatar">🦊</div><div class="bp-name">Player 1</div><div class="bp-score">0</div></div>
-        <div class="battle-player"><div class="bp-avatar">🐺</div><div class="bp-name">Player 2</div><div class="bp-score">0</div></div>
+        <div class="battle-player"><div class="bp-avatar">🦊</div><div class="bp-name">P1</div><div class="bp-score">0</div></div>
+        <div class="battle-player"><div class="bp-avatar">🐺</div><div class="bp-name">P2</div><div class="bp-score">0</div></div>
       </div>
     </div>
     <div class="total-xp-banner">
@@ -237,8 +227,8 @@
       <div class="txb-val" id="res-total-xp">0</div>
     </div>
     <div class="btn-row">
-      <button class="btn btn-secondary" onclick="state.is2Player=false; renderHome()">🏠 Home</button>
-      <button class="btn btn-primary" onclick="state.is2Player=false; startQuiz()">🔄 Play Again</button>
+      <button class="btn btn-secondary" onclick="state.is2Player=false;renderHome()">🏠 Home</button>
+      <button class="btn btn-primary" onclick="state.is2Player=false;startQuiz()">🔄 Play Again</button>
     </div>
   </div>
 
@@ -251,7 +241,7 @@
     <div id="lb-list"></div>
   </div>
 
-  <!-- ===== BADGES SCREEN ===== -->
+  <!-- ===== BADGES ===== -->
   <div id="screen-badges" class="screen">
     <div class="screen-header">
       <button class="back-btn" onclick="renderHome()">←</button>
@@ -302,115 +292,67 @@
       <div class="dc-desc">Random quiz · <span class="dc-bonus">+50 Bonus XP</span></div>
     </div>
     <div class="card" style="text-align:center">
-      <p style="font-size:0.9rem;color:var(--text2);line-height:1.6">
-        Take on today's random quiz challenge!<br>One attempt per day. Bonus XP awaits!
-      </p>
+      <p style="font-size:0.9rem;color:var(--text2);line-height:1.6">One attempt per day. Bonus XP awaits!</p>
     </div>
-    <p class="dc-done" id="dc-done-msg" style="display:none;text-align:center;padding:1rem"></p>
-    <button class="btn btn-primary" id="btn-start-daily" onclick="startDailyChallenge()" style="margin-top:0.5rem">
-      🚀 Start Challenge
-    </button>
-  </div>
-
-  <!-- ===== PROFILE SCREEN ===== -->
-  <div id="screen-profile" class="screen">
-    <div class="screen-header">
-      <button class="back-btn" onclick="renderHome()">←</button>
-      <div class="screen-title">Player Profile</div>
-    </div>
-    <!-- DateTime shown on profile page -->
-    <div class="datetime-wrap" style="margin-bottom:1rem">
-      <span id="profile-datetime" style="font-size:0.8rem;color:var(--text2)"></span>
-    </div>
-    <div class="player-section">
-      <div class="section-label">Pick Your Avatar</div>
-      <div class="avatar-grid" id="avatar-grid"></div>
-      <div class="name-row" style="margin-top:0.75rem">
-        <input type="text" class="name-input" id="name-input" placeholder="Your name..." maxlength="20"
-          onkeydown="if(event.key==='Enter') saveCurrentName()">
-        <button class="btn btn-sm btn-secondary" onclick="saveCurrentName()" style="width:auto;padding:0.7rem 0.9rem">✓</button>
-      </div>
-    </div>
-    <!-- Players Chips -->
-    <div class="section-label">All Players</div>
-    <div id="players-chips" class="players-chips"></div>
-    <button class="btn btn-primary" onclick="addPlayer()" style="margin-top:0.5rem">+ Add New Player</button>
+    <p id="dc-done-msg" style="display:none;text-align:center;padding:1rem;color:var(--text2);font-size:0.9rem"></p>
+    <button class="btn btn-primary" id="btn-start-daily" onclick="startDailyChallenge()" style="margin-top:0.5rem">🚀 Start Challenge</button>
   </div>
 
 </div><!-- /app -->
 
-<!-- ===== HAMBURGER SIDE MENU ===== -->
+<!-- ===== HAMBURGER MENU ===== -->
 <div class="hamburger-overlay" id="hamburger-overlay" onclick="toggleHamburger()"></div>
 <div class="hamburger-menu" id="hamburger-menu">
   <div class="hm-header">
     <div class="hm-avatar" id="hm-avatar">🦊</div>
-    <div>
+    <div style="flex:1">
       <div class="hm-name" id="hm-name">Guest</div>
       <div class="hm-xp" id="hm-xp">⚡ 0 XP</div>
     </div>
     <button class="hm-close" onclick="toggleHamburger()">✕</button>
   </div>
-
-  <div class="hm-section-label">Language</div>
+  <div class="hm-section-label">🌐 Language</div>
   <div class="hm-lang-row">
     <button class="hm-lang-btn" data-lang="en" onclick="switchLang('en');toggleHamburger()">🇬🇧 English</button>
     <button class="hm-lang-btn" data-lang="hi" onclick="switchLang('hi');toggleHamburger()">🇮🇳 हिंदी</button>
     <button class="hm-lang-btn" data-lang="mr" onclick="switchLang('mr');toggleHamburger()">🇮🇳 मराठी</button>
   </div>
-
-  <div class="hm-section-label">Menu</div>
-  <button class="hm-item" onclick="renderLeaderboard();toggleHamburger()">🏆 Top 10 Players</button>
-  <button class="hm-item" onclick="renderDashboard();toggleHamburger()">📊 Dashboard</button>
-  <button class="hm-item" onclick="renderBadgesScreen();toggleHamburger()">🎖️ Badges</button>
-  <button class="hm-item" onclick="renderDailyChallenge();toggleHamburger()">🗓️ Daily Challenge</button>
-
-  <div class="hm-section-label">Account</div>
+  <div class="hm-section-label">👤 Account</div>
   <button class="hm-item" onclick="openProfile();toggleHamburger()">👤 Player Profile</button>
   <button class="hm-item" onclick="openAddPlayer();toggleHamburger()">➕ Add New Player</button>
   <button class="hm-item" onclick="openSettings();toggleHamburger()">⚙️ Settings</button>
-
-  <div class="hm-section-label">Theme</div>
-  <button class="hm-item" id="hm-theme-btn" onclick="toggleTheme()">🌙 Dark / Light Mode</button>
+  <div class="hm-section-label">🎨 Appearance</div>
+  <button class="hm-item" id="hm-theme-btn" onclick="toggleTheme()">🌙 Toggle Dark / Light</button>
 </div>
 
-<!-- ===== SETTINGS MODAL ===== -->
+<!-- SETTINGS MODAL -->
 <div class="modal-overlay" id="modal-settings">
   <div class="modal">
     <div class="modal-icon">⚙️</div>
     <div class="modal-title">Settings</div>
-    <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.25rem;text-align:left">
-      <label style="display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:0.9rem">
-        Dark Mode
-        <input type="checkbox" id="setting-dark" onchange="if(this.checked&&state.theme!=='dark'||!this.checked&&state.theme!=='light')toggleTheme()" style="width:18px;height:18px;accent-color:var(--accent)">
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.25rem;text-align:left">
+      <label style="display:flex;justify-content:space-between;align-items:center;font-weight:700">
+        Dark Mode <input type="checkbox" id="setting-dark" style="width:18px;height:18px;accent-color:var(--accent)" onchange="if((this.checked&&state.theme!=='dark')||(!this.checked&&state.theme!=='light'))toggleTheme()">
       </label>
-      <label style="display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:0.9rem">
-        Sound Effects
-        <input type="checkbox" id="setting-sound" checked style="width:18px;height:18px;accent-color:var(--accent)">
-      </label>
-      <label style="display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:0.9rem">
-        Animations
-        <input type="checkbox" id="setting-anim" checked style="width:18px;height:18px;accent-color:var(--accent)">
+      <label style="display:flex;justify-content:space-between;align-items:center;font-weight:700">
+        Sound Effects <input type="checkbox" id="setting-sound" checked style="width:18px;height:18px;accent-color:var(--accent)">
       </label>
     </div>
     <button class="btn btn-primary" onclick="document.getElementById('modal-settings').classList.remove('open')">Save & Close</button>
   </div>
 </div>
 
-<!-- 2-Player Setup Modal -->
+<!-- 2-PLAYER MODAL -->
 <div class="modal-overlay" id="modal-2player">
   <div class="modal">
     <div class="modal-icon">⚔️</div>
     <div class="modal-title">2 Player Battle</div>
-    <div class="modal-desc">Select two players for a head-to-head quiz battle!</div>
+    <div class="modal-desc">Select two players!</div>
     <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1rem">
-      <div>
-        <div class="section-label">Player 1</div>
-        <select id="p1-select" style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.95rem;outline:none;cursor:pointer;"></select>
-      </div>
-      <div>
-        <div class="section-label">Player 2</div>
-        <select id="p2-select" style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.95rem;outline:none;cursor:pointer;"></select>
-      </div>
+      <div><div class="section-label">Player 1</div>
+        <select id="p1-select" style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.95rem;outline:none;"></select></div>
+      <div><div class="section-label">Player 2</div>
+        <select id="p2-select" style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.95rem;outline:none;"></select></div>
     </div>
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="cancel2Player()">Cancel</button>
@@ -419,26 +361,25 @@
   </div>
 </div>
 
-<!-- Turn Switch Modal -->
+<!-- TURN SWITCH MODAL -->
 <div class="modal-overlay" id="modal-turn-switch">
   <div class="modal">
     <div class="modal-icon">🔄</div>
     <div class="modal-title" id="switch-title">Get Ready!</div>
-    <div class="modal-desc" id="switch-desc">Pass the device to the next player</div>
+    <div class="modal-desc" id="switch-desc">Pass the device</div>
     <button class="btn btn-primary" onclick="confirmTurnSwitch()">I'm Ready! ▶</button>
   </div>
 </div>
 
-<!-- Add Player Modal -->
+<!-- ADD PLAYER MODAL -->
 <div class="modal-overlay" id="modal-add-player">
   <div class="modal">
     <div class="modal-icon">➕</div>
     <div class="modal-title">Add New Player</div>
-    <div class="modal-desc">Pick an avatar and enter a name</div>
+    <div class="section-label" style="margin-bottom:0.5rem">Pick Avatar</div>
     <div class="avatar-grid" id="modal-avatar-grid" style="margin-bottom:0.75rem"></div>
     <input type="text" class="name-input" id="modal-name-input" placeholder="Player name..." maxlength="20"
-      style="margin-bottom:1rem;display:block;width:100%"
-      onkeydown="if(event.key==='Enter')confirmAddPlayer()">
+      style="margin-bottom:1rem;display:block;width:100%" onkeydown="if(event.key==='Enter')confirmAddPlayer()">
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="document.getElementById('modal-add-player').classList.remove('open')">Cancel</button>
       <button class="btn btn-primary" onclick="confirmAddPlayer()">✓ Add Player</button>
