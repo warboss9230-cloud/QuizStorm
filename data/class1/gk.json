@@ -1,0 +1,12 @@
+[
+  {"question":"What is the capital of India?","option1":"Mumbai","option2":"Kolkata","option3":"New Delhi","option4":"Chennai","answer":"option3","level":1,"hint":"The city where the President lives"},
+  {"question":"How many days are in a week?","option1":"5","option2":"6","option3":"8","option4":"7","answer":"option4","level":1,"hint":"Sunday to Saturday"},
+  {"question":"Which colour is at the top of a traffic light?","option1":"Green","option2":"Yellow","option3":"Red","option4":"Blue","answer":"option3","level":1,"hint":"Stop!"},
+  {"question":"How many months are in a year?","option1":"10","option2":"11","option3":"12","option4":"13","answer":"option3","level":1,"hint":"January to December"},
+  {"question":"What shape is a ball?","option1":"Square","option2":"Sphere","option3":"Cube","option4":"Circle","answer":"option2","level":1,"hint":"Round in 3D"},
+  {"question":"Which festival has colourful kites?","option1":"Diwali","option2":"Holi","option3":"Makar Sankranti","option4":"Eid","answer":"option3","level":2,"hint":"January festival"},
+  {"question":"Who wrote our National Anthem?","option1":"Mahatma Gandhi","option2":"B.R. Ambedkar","option3":"Rabindranath Tagore","option4":"Subhas Chandra Bose","answer":"option3","level":2,"hint":"Famous poet from Bengal"},
+  {"question":"What is the national animal of India?","option1":"Lion","option2":"Elephant","option3":"Tiger","option4":"Leopard","answer":"option3","level":1,"hint":"Bengal ___"},
+  {"question":"How many continents are there?","option1":"5","option2":"6","option3":"8","option4":"7","answer":"option4","level":2,"hint":"Asia, Africa, Europe..."},
+  {"question":"Which planet do we live on?","option1":"Mars","option2":"Venus","option3":"Earth","option4":"Jupiter","answer":"option3","level":1,"hint":"The Blue Planet"}
+]
