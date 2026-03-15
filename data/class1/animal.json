@@ -1,0 +1,12 @@
+[
+  {"question":"Which is the fastest land animal?","option1":"Lion","option2":"Horse","option3":"Cheetah","option4":"Leopard","answer":"option3","level":1,"hint":"Can run over 100 km/h"},
+  {"question":"What do snakes use to smell?","option1":"Nose","option2":"Tongue","option3":"Eyes","option4":"Scales","answer":"option2","level":2,"hint":"Flicks in and out"},
+  {"question":"Which animal has the longest neck?","option1":"Elephant","option2":"Camel","option3":"Giraffe","option4":"Ostrich","answer":"option3","level":1,"hint":"Tallest animal on land"},
+  {"question":"What is a group of fish called?","option1":"Pack","option2":"Flock","option3":"Herd","option4":"School","answer":"option4","level":2,"hint":"Fish swim in a ___"},
+  {"question":"Which animal can change color?","option1":"Frog","option2":"Chameleon","option3":"Lizard","option4":"Snake","answer":"option2","level":1,"hint":"Master of camouflage"},
+  {"question":"How long is an elephant pregnant?","option1":"3 months","option2":"9 months","option3":"22 months","option4":"12 months","answer":"option3","level":3,"hint":"Almost 2 years!"},
+  {"question":"Which bird is known for dancing in rain?","option1":"Parrot","option2":"Peacock","option3":"Sparrow","option4":"Crow","answer":"option2","level":1,"hint":"National bird of India"},
+  {"question":"What do pandas mainly eat?","option1":"Fish","option2":"Bamboo","option3":"Fruits","option4":"Insects","answer":"option2","level":1,"hint":"A type of grass/plant"},
+  {"question":"Which marine animal is known for intelligence?","option1":"Shark","option2":"Tuna","option3":"Dolphin","option4":"Jellyfish","answer":"option3","level":1,"hint":"Playful and smart ocean mammal"},
+  {"question":"What is the only flying mammal?","option1":"Flying squirrel","option2":"Eagle","option3":"Bat","option4":"Pelican","answer":"option3","level":2,"hint":"Active at night, uses echolocation"}
+]
