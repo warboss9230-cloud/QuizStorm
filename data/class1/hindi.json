@@ -1,0 +1,12 @@
+[
+  {"question":"हिंदी वर्णमाला का पहला अक्षर कौन सा है?","option1":"इ","option2":"अ","option3":"उ","option4":"ए","answer":"option2","level":1,"hint":"स्वर का पहला अक्षर"},
+  {"question":"'सेब' किस रंग का होता है?","option1":"नीला","option2":"पीला","option3":"लाल","option4":"हरा","answer":"option3","level":1,"hint":"लाल रंग का फल"},
+  {"question":"'गाय' का बच्चा क्या कहलाता है?","option1":"बच्छड़ा","option2":"पिल्ला","option3":"बछड़ा","option4":"मेमना","answer":"option3","level":2,"hint":"छोटी गाय"},
+  {"question":"सूरज किस दिशा में उगता है?","option1":"पश्चिम","option2":"उत्तर","option3":"दक्षिण","option4":"पूर्व","answer":"option4","level":1,"hint":"जहाँ से सुबह होती है"},
+  {"question":"'फूल' का बहुवचन क्या है?","option1":"फूलें","option2":"फूल","option3":"फूलों","option4":"फूले","answer":"option2","level":2,"hint":"कई फूल"},
+  {"question":"'पानी' का पर्यायवाची शब्द क्या है?","option1":"आग","option2":"जल","option3":"मिट्टी","option4":"हवा","answer":"option2","level":2,"hint":"नदी में बहता है"},
+  {"question":"'बड़ा' का विलोम शब्द क्या है?","option1":"लंबा","option2":"मोटा","option3":"छोटा","option4":"भारी","answer":"option3","level":1,"hint":"opposite of बड़ा"},
+  {"question":"एक हफ्ते में कितने दिन होते हैं?","option1":"5","option2":"6","option3":"7","option4":"8","answer":"option3","level":1,"hint":"सोमवार से रविवार"},
+  {"question":"भारत का राष्ट्रीय पक्षी कौन सा है?","option1":"तोता","option2":"कोयल","option3":"मोर","option4":"हंस","answer":"option3","level":2,"hint":"सुंदर पंखों वाला पक्षी"},
+  {"question":"'माँ' के लिए अंग्रेजी शब्द क्या है?","option1":"Sister","option2":"Aunt","option3":"Mother","option4":"Girl","answer":"option3","level":1,"hint":"M से शुरू होता है"}
+]
