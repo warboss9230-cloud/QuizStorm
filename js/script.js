@@ -183,41 +183,141 @@ function loadQuizHistory() {
 function saveQuizHistory() { localStorage.setItem('qs_history', JSON.stringify(state.quizHistory.slice(-50))); }
 
 // ===== CANVAS BG =====
+const BG_TYPES = [
+  { id:'emojis',   label:'Emojis',   emoji:'✨' },
+  { id:'stars',    label:'Stars',    emoji:'⭐' },
+  { id:'bubbles',  label:'Bubbles',  emoji:'🫧' },
+  { id:'matrix',   label:'Matrix',   emoji:'💻' },
+  { id:'fireworks',label:'Fireworks',emoji:'🎆' },
+  { id:'snow',     label:'Snow',     emoji:'❄️' },
+  { id:'hearts',   label:'Hearts',   emoji:'❤️' },
+  { id:'galaxy',   label:'Galaxy',   emoji:'🌌' },
+  { id:'confetti', label:'Confetti', emoji:'🎊' },
+  { id:'none',     label:'Off',      emoji:'⬛' },
+];
+let currentBgType = 'emojis';
+let bgAnimFrame = null;
+let bgParticles = [];
+
+function initBgSwitcher() {
+  const wrap = document.getElementById('bg-sw-btns');
+  if (!wrap || wrap.children.length > 0) return;
+  BG_TYPES.forEach(bt => {
+    const b = document.createElement('button');
+    b.className = 'bg-sw-btn' + (bt.id === currentBgType ? ' active' : '');
+    b.title = bt.label;
+    b.textContent = bt.emoji;
+    b.onclick = () => {
+      currentBgType = bt.id;
+      localStorage.setItem('qs_bg', bt.id);
+      wrap.querySelectorAll('.bg-sw-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      startBgAnimation();
+    };
+    wrap.appendChild(b);
+  });
+}
+
 function initCanvas() {
+  currentBgType = localStorage.getItem('qs_bg') || 'emojis';
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  const emojis = ['⚡','🌟','🎯','🔥','💫','✨','🎮','📚','🏆'];
-  const particles = Array.from({length: 25}, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    emoji: emojis[Math.floor(Math.random() * emojis.length)],
-    size: 12 + Math.random() * 18,
-    speedX: (Math.random() - 0.5) * 0.4,
-    speedY: -0.2 - Math.random() * 0.3,
-    opacity: 0.1 + Math.random() * 0.25,
-  }));
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      ctx.globalAlpha = p.opacity;
-      ctx.font = `${p.size}px serif`;
-      ctx.fillText(p.emoji, p.x, p.y);
-      p.x += p.speedX; p.y += p.speedY;
-      if (p.y < -30) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
-      if (p.x < -30) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 30) p.x = -10;
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(draw);
-  }
-  draw();
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    buildParticles();
   });
+  startBgAnimation();
+}
+
+function buildParticles() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const W = canvas.width, H = canvas.height;
+  const type = currentBgType;
+  if (type === 'none') { bgParticles = []; return; }
+  const count = type === 'matrix' ? 40 : type === 'snow' ? 60 : 28;
+
+  const emojiSets = {
+    emojis:    ['⚡','🌟','🎯','🔥','💫','✨','🎮','📚','🏆'],
+    stars:     ['⭐','🌟','💫','✨','🌠'],
+    bubbles:   ['⭕','🔵','🟣','🔴','🟡'],
+    hearts:    ['❤️','💛','💚','💙','💜','🩷'],
+    fireworks: ['🎆','✨','💥','🌟','⭐'],
+    snow:      ['❄️','🌨️','⛄','❅'],
+    galaxy:    ['🌌','⭐','🪐','🌠','💫'],
+    confetti:  ['🎊','🎉','🎈','🎀','🎁'],
+  };
+
+  bgParticles = Array.from({length: count}, () => ({
+    x: Math.random() * W, y: Math.random() * H,
+    emoji: type === 'matrix' ? String.fromCharCode(0x30A0 + Math.random()*96|0) : (emojiSets[type]||emojiSets.emojis)[Math.floor(Math.random()*(emojiSets[type]||emojiSets.emojis).length)],
+    size: type === 'matrix' ? 10+Math.random()*8 : type === 'snow' ? 8+Math.random()*14 : 10+Math.random()*16,
+    speedX: type === 'snow' ? (Math.random()-0.5)*0.5 : (Math.random()-0.5)*0.35,
+    speedY: type === 'snow' ? 0.4+Math.random()*0.6 : -0.15-Math.random()*0.35,
+    opacity: type === 'matrix' ? 0.6+Math.random()*0.4 : 0.08+Math.random()*0.2,
+    color: type === 'matrix' ? `hsl(${120+Math.random()*30},100%,${50+Math.random()*30}%)` : null,
+    spin: Math.random() * Math.PI * 2,
+    spinSpeed: (Math.random()-0.5)*0.02,
+  }));
+}
+
+function startBgAnimation() {
+  if (bgAnimFrame) cancelAnimationFrame(bgAnimFrame);
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  buildParticles();
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const W = canvas.width, H = canvas.height;
+    if (currentBgType === 'none') { bgAnimFrame = requestAnimationFrame(draw); return; }
+
+    bgParticles.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      if (currentBgType === 'matrix') {
+        ctx.fillStyle = p.color;
+        ctx.font = `bold ${p.size}px monospace`;
+        ctx.fillText(p.emoji, p.x, p.y);
+        p.emoji = String.fromCharCode(0x30A0 + Math.random()*96|0);
+      } else if (currentBgType === 'bubbles') {
+        const colors = ['rgba(59,130,246,','rgba(168,85,247,','rgba(239,68,68,','rgba(247,197,46,'];
+        ctx.strokeStyle = colors[Math.floor(Math.random()*colors.length)] + '0.5)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+        ctx.stroke();
+        ctx.fillStyle = colors[Math.floor(Math.random()*colors.length)] + '0.05)';
+        ctx.fill();
+      } else if (currentBgType === 'confetti') {
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.spin);
+        ctx.fillStyle = ['#f7c52e','#ff6b6b','#a855f7','#22c55e','#3b82f6'][Math.floor(Math.random()*5)];
+        ctx.fillRect(-p.size/2, -p.size/4, p.size, p.size/2);
+        p.spin += p.spinSpeed;
+      } else {
+        ctx.font = `${p.size}px serif`;
+        ctx.fillText(p.emoji, p.x, p.y);
+      }
+      ctx.restore();
+
+      p.x += p.speedX; p.y += p.speedY;
+      if (currentBgType === 'snow') {
+        if (p.y > H+20) { p.y = -20; p.x = Math.random()*W; }
+      } else {
+        if (p.y < -40) { p.y = H+20; p.x = Math.random()*W; }
+      }
+      if (p.x < -40) p.x = W+20;
+      if (p.x > W+40) p.x = -20;
+    });
+    ctx.globalAlpha = 1;
+    bgAnimFrame = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 // ===== SCREEN NAV =====
@@ -229,7 +329,7 @@ function showScreen(id) {
 
 // ===== DATETIME =====
 function updateDatetime() {
-  const el = document.getElementById('datetime');
+  const el = document.getElementById('topbar-time');
   if (!el) return;
   const now = new Date();
   el.textContent = now.toLocaleString(state.lang === 'hi' ? 'hi-IN' : state.lang === 'mr' ? 'mr-IN' : 'en-IN', {
@@ -283,6 +383,7 @@ function renderHome() {
   renderHomeModeCards();
   updateDailyBanner();
   updateHamburgerLangBtns();
+  initBgSwitcher();
 }
 
 function renderTopbarPlayer() {
@@ -302,11 +403,11 @@ function renderTopbarPlayer() {
 function renderHomeModeCards() {
   const grid = document.getElementById('home-mode-grid');
   if (!grid) return;
-  grid.querySelectorAll('.mode-card').forEach(c => {
+  grid.querySelectorAll('.gm-card').forEach(c => {
     c.classList.toggle('selected', c.dataset.mode === state.gameMode);
     c.onclick = () => {
       state.gameMode = c.dataset.mode;
-      grid.querySelectorAll('.mode-card').forEach(x => x.classList.remove('selected'));
+      grid.querySelectorAll('.gm-card').forEach(x => x.classList.remove('selected'));
       c.classList.add('selected');
     };
   });
@@ -336,11 +437,50 @@ function toggleHamburger() {
 // ===== PROFILE & ADD PLAYER =====
 function openProfile() {
   showScreen('screen-profile');
-  updateDatetime();
-  renderAvatarGrid();
-  renderPlayersChips();
   const p = getActiveProfile();
-  if (p) document.getElementById('name-input').value = p.name;
+  // Hero section
+  document.getElementById('profile-hero-avatar').textContent = p ? p.avatar : '🦊';
+  document.getElementById('profile-hero-name').textContent = p ? p.name : 'Guest';
+  document.getElementById('profile-hero-xp').textContent = `⚡ ${p ? p.xp : 0} XP`;
+  // Stats
+  document.getElementById('profile-xp').textContent = p ? (p.xp||0) : 0;
+  document.getElementById('profile-streak').textContent = p ? (p.bestStreak||0) : 0;
+  document.getElementById('profile-games').textContent = p ? (p.games||0) : 0;
+  // Badges row
+  const br = document.getElementById('profile-badges-row');
+  if (br) {
+    const earned = p?.badges || [];
+    if (earned.length === 0) {
+      br.innerHTML = '<span style="font-size:0.8rem;color:var(--text2)">No badges yet</span>';
+    } else {
+      br.innerHTML = earned.map(id => {
+        const b = BADGES.find(x=>x.id===id);
+        return b ? `<span title="${b.name}" style="font-size:1.4rem">${b.icon}</span>` : '';
+      }).join('');
+    }
+  }
+  // Edit panel hidden by default
+  const ep = document.getElementById('profile-edit-panel');
+  if (ep) ep.style.display = 'none';
+  document.getElementById('profile-edit-btn').textContent = '✏️ Edit';
+  // Chips
+  renderPlayersChips();
+}
+
+function toggleProfileEdit() {
+  const ep = document.getElementById('profile-edit-panel');
+  const btn = document.getElementById('profile-edit-btn');
+  const isHidden = ep.style.display === 'none' || !ep.style.display;
+  if (isHidden) {
+    ep.style.display = 'block';
+    btn.textContent = '✕ Close';
+    renderAvatarGrid();
+    const p = getActiveProfile();
+    if (p) document.getElementById('name-input').value = p.name;
+  } else {
+    ep.style.display = 'none';
+    btn.textContent = '✏️ Edit';
+  }
 }
 
 function openAddPlayer() {
@@ -405,6 +545,7 @@ function renderLangBtns() {
 
 function renderAvatarGrid() {
   const grid = document.getElementById('avatar-grid');
+  if (!grid) return;
   grid.innerHTML = '';
   AVATARS.forEach((av, i) => {
     const d = document.createElement('div');
@@ -423,6 +564,7 @@ function selectAvatar(av) {
 
 function renderPlayersChips() {
   const wrap = document.getElementById('players-chips');
+  if (!wrap) return;
   wrap.innerHTML = '';
   if (state.profiles.length === 0) return;
   state.profiles.forEach((p, i) => {
@@ -464,20 +606,41 @@ function saveCurrentName() {
   if (!nameEl) return;
   const name = nameEl.value.trim();
   if (!name) return;
+  // Also check selected avatar
+  const selAv = document.querySelector('#avatar-grid .avatar-option.selected');
   const p = getActiveProfile();
-  if (p) { p.name = name; saveProfiles(); renderPlayersChips(); renderTopbarPlayer(); }
-  else { addPlayer(); }
+  if (p) {
+    p.name = name;
+    if (selAv) p.avatar = selAv.dataset.av;
+    saveProfiles();
+    renderPlayersChips();
+    renderTopbarPlayer();
+    // Refresh profile hero
+    const pha = document.getElementById('profile-hero-avatar');
+    const phn = document.getElementById('profile-hero-name');
+    if (pha) pha.textContent = p.avatar;
+    if (phn) phn.textContent = p.name;
+    showXPToast('✅ Saved!', 'var(--correct)');
+    // Close edit panel
+    const ep = document.getElementById('profile-edit-panel');
+    const btn = document.getElementById('profile-edit-btn');
+    if (ep) ep.style.display = 'none';
+    if (btn) btn.textContent = '✏️ Edit';
+  } else {
+    openAddPlayer();
+  }
 }
 
 // ===== CLASS SELECT =====
 function renderClassSelect() {
   showScreen('screen-class');
+  const classAvatars = ['🐣','🐥','🐦','🦊','🦁','🐯','🦅','🦋','🐉','🌟','⚡','🏆'];
   const grid = document.getElementById('class-grid');
   grid.innerHTML = '';
   for (let i = 1; i <= 12; i++) {
     const d = document.createElement('div');
     d.className = 'class-card';
-    d.innerHTML = `<span class="class-num">${i}</span><span class="class-lbl">Class</span>`;
+    d.innerHTML = `<span class="class-avatar">${classAvatars[i-1]||'📚'}</span><span class="class-num">${i}</span><span class="class-lbl">Class</span>`;
     d.onclick = () => { state.selectedClass = i; renderSubjectSelect(); };
     grid.appendChild(d);
   }
@@ -541,7 +704,7 @@ function renderMixSubjectList() {
 function startMixQuiz() {
   if (state.selectedSubjects.length === 0) { alert('Please select at least one subject!'); return; }
   state.isMixQuiz = true;
-  state.mixCount = parseInt(document.getElementById('mix-count').value) || 10;
+  state.mixCount = parseInt(document.getElementById('mix-count').value) || 20;
   startQuiz();
 }
 
@@ -717,7 +880,8 @@ function renderQuestion() {
   state.hintUsed = false;
   const hintBtn = document.getElementById('hint-btn');
   hintBtn.disabled = false;
-  hintBtn.style.opacity = '1';
+  hintBtn.classList.remove('no-xp');
+  hintBtn.style.opacity = '';
 
   // Next btn
   document.getElementById('next-btn').classList.remove('visible');
@@ -826,6 +990,8 @@ function handleWrongAnswer(timeUp = false) {
 
 function useHint() {
   if (state.hintUsed) return;
+  const curXP = state.is2Player ? state.playerXP[state.currentPlayer] : state.xpEarned;
+  if (curXP <= 0) { showXPToast('No XP for hint! ❌', 'var(--wrong)'); return; }
   const q = state.questions[state.currentQ];
   const correct = QSecurity.decryptAnswer(q._enc);
   const opts = ['option1','option2','option3','option4'];
@@ -1202,8 +1368,7 @@ function renderPlayerSelects() {
       sel.appendChild(opt);
     });
   });
-  const qEl = document.getElementById('p2-questions');
-  if (qEl) qEl.value = 10;
+  // p2-questions removed from modal
 }
 
 function start2PlayerQuiz() {
@@ -1260,6 +1425,7 @@ function init() {
   // Mix count slider
   const mixCount = document.getElementById('mix-count');
   if (mixCount) {
+    state.mixCount = parseInt(mixCount.value) || 20;
     mixCount.oninput = () => {
       document.getElementById('mix-count-val').textContent = mixCount.value;
       state.mixCount = parseInt(mixCount.value);
