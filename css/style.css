@@ -184,32 +184,65 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .question-text{font-size:0.98rem;font-weight:800;line-height:1.45;color:#1a1a2e;text-align:left;}
 
 /* ===== OPTION CARDS — Circle badge style ===== */
-.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;margin-bottom:0.75rem;}
-.option-btn{position:relative;background:rgba(30,30,60,0.88);border:1.5px solid rgba(255,255,255,0.12);border-radius:1rem;padding:0.55rem 0.6rem 0.55rem 0.5rem;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;color:var(--text);line-height:1.3;display:flex;flex-direction:row;align-items:center;gap:0.5rem;transition:transform 0.12s ease,box-shadow 0.12s ease,border-color 0.12s ease;min-height:52px;box-shadow:0 3px 10px rgba(0,0,0,0.3);}
-[data-theme="light"] .option-btn{background:rgba(240,244,255,0.92);border-color:rgba(0,0,0,0.1);}
-.option-btn:hover:not(:disabled){transform:translateY(-2px) scale(1.02);border-color:rgba(255,255,255,0.35);box-shadow:0 6px 20px rgba(0,0,0,0.4);}
-.option-btn:active:not(:disabled){transform:scale(0.97);}
+/* Options — 1 column colorful strips */
+.options-grid{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;}
+
+.option-btn{
+  position:relative;
+  border:none;border-radius:1rem;
+  padding:0.7rem 3rem 0.7rem 0.6rem;
+  cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;
+  line-height:1.3;display:flex;flex-direction:row;align-items:center;gap:0.55rem;
+  transition:transform 0.12s ease,box-shadow 0.12s ease;
+  min-height:56px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.35);
+}
+.option-btn:hover:not(:disabled){transform:translateY(-2px) scale(1.01);}
+.option-btn:active:not(:disabled){transform:scale(0.98);}
 .option-btn:disabled{cursor:default;}
 
-.opt-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:0.95rem;font-weight:400;flex-shrink:0;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.4);}
-#opt-0 .opt-circle{background:linear-gradient(135deg,#ef4444,#dc2626);}
-#opt-1 .opt-circle{background:linear-gradient(135deg,#3b82f6,#1d4ed8);}
-#opt-2 .opt-circle{background:linear-gradient(135deg,#f59e0b,#d97706);}
-#opt-3 .opt-circle{background:linear-gradient(135deg,#22c55e,#16a34a);}
+/* Each option gets its own full gradient background */
+#opt-0{background:linear-gradient(135deg,#b91c1c 0%,#ef4444 60%,#fca5a5 100%);}
+#opt-1{background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 60%,#93c5fd 100%);}
+#opt-2{background:linear-gradient(135deg,#92400e 0%,#f59e0b 60%,#fcd34d 100%);}
+#opt-3{background:linear-gradient(135deg,#14532d 0%,#22c55e 60%,#86efac 100%);}
 
-.opt-text{font-size:0.88rem;font-weight:700;line-height:1.3;color:var(--text);flex:1;text-align:left;}
+#opt-0:hover:not(:disabled){box-shadow:0 6px 24px rgba(239,68,68,0.55);}
+#opt-1:hover:not(:disabled){box-shadow:0 6px 24px rgba(59,130,246,0.55);}
+#opt-2:hover:not(:disabled){box-shadow:0 6px 24px rgba(245,158,11,0.55);}
+#opt-3:hover:not(:disabled){box-shadow:0 6px 24px rgba(34,197,94,0.55);}
 
-.option-btn.correct{background:linear-gradient(135deg,rgba(34,197,94,0.25),rgba(21,128,61,0.2)) !important;border-color:#22c55e !important;box-shadow:0 0 0 2px rgba(34,197,94,0.3),0 6px 20px rgba(34,197,94,0.3) !important;animation:correctPop 0.35s ease;}
-.option-btn.correct .opt-circle{background:linear-gradient(135deg,#22c55e,#16a34a) !important;}
-.option-btn.correct .opt-text{color:#4ade80;}
-.option-btn.correct::after{content:'✓';position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#4ade80;font-weight:900;}
+/* Circle badge — white background on colored strip */
+.opt-circle{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fredoka One',cursive;font-size:1rem;
+  flex-shrink:0;color:#1a1a2e;background:rgba(255,255,255,0.9);
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  font-weight:400;
+}
 
-.option-btn.wrong{background:linear-gradient(135deg,rgba(239,68,68,0.25),rgba(185,28,28,0.2)) !important;border-color:#ef4444 !important;box-shadow:0 0 0 2px rgba(239,68,68,0.3),0 6px 20px rgba(239,68,68,0.3) !important;animation:shake 0.4s ease;}
-.option-btn.wrong .opt-circle{background:linear-gradient(135deg,#ef4444,#dc2626) !important;}
-.option-btn.wrong .opt-text{color:#fca5a5;}
-.option-btn.wrong::after{content:'✗';position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#fca5a5;font-weight:900;}
+.opt-text{font-size:0.95rem;font-weight:800;line-height:1.3;color:#fff;flex:1;text-align:left;text-shadow:0 1px 3px rgba(0,0,0,0.3);}
 
-.option-btn.eliminated{opacity:0.2;pointer-events:none;filter:grayscale(1);}
+/* Correct */
+.option-btn.correct{
+  background:linear-gradient(135deg,#14532d,#16a34a,#4ade80) !important;
+  box-shadow:0 0 0 3px #4ade80,0 6px 24px rgba(34,197,94,0.5) !important;
+  animation:correctPop 0.35s ease;
+}
+.option-btn.correct .opt-circle{background:#fff;color:#16a34a;}
+.option-btn.correct::after{content:'✓';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:#fff;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,0.3);}
+
+/* Wrong */
+.option-btn.wrong{
+  background:linear-gradient(135deg,#7f1d1d,#dc2626,#fca5a5) !important;
+  box-shadow:0 0 0 3px #fca5a5,0 6px 24px rgba(239,68,68,0.5) !important;
+  animation:shake 0.4s ease;
+}
+.option-btn.wrong .opt-circle{background:#fff;color:#dc2626;}
+.option-btn.wrong::after{content:'✗';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:#fff;font-weight:900;}
+
+.option-btn.eliminated{opacity:0.25;pointer-events:none;filter:grayscale(0.6);}
 
 /* ===== QUIZ ACTIONS ===== */
 .quiz-actions{display:flex;gap:0.6rem;}
@@ -371,7 +404,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:360px){
-  .options-grid{grid-template-columns:1fr;}
   .class-grid{grid-template-columns:repeat(3,1fr);}
   .badges-grid{grid-template-columns:repeat(3,1fr);}
   .logo-text{font-size:2.2rem;}
