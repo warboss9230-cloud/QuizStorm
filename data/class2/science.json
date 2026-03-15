@@ -1,0 +1,12 @@
+[
+  {"question":"Which organ pumps blood?","option1":"Lungs","option2":"Brain","option3":"Heart","option4":"Kidney","answer":"option3","level":1,"hint":"It beats in your chest"},
+  {"question":"What is the boiling point of water?","option1":"50°C","option2":"80°C","option3":"100°C","option4":"120°C","answer":"option3","level":2,"hint":"Water turns to steam at this temperature"},
+  {"question":"What do plants produce during photosynthesis?","option1":"Carbon dioxide","option2":"Nitrogen","option3":"Oxygen","option4":"Hydrogen","answer":"option3","level":2,"hint":"We breathe this gas"},
+  {"question":"How many bones does an adult human have?","option1":"186","option2":"206","option3":"256","option4":"196","answer":"option2","level":3,"hint":"Around 200"},
+  {"question":"Which gas is most abundant in Earth's atmosphere?","option1":"Oxygen","option2":"Carbon dioxide","option3":"Nitrogen","option4":"Argon","answer":"option3","level":3,"hint":"About 78% of air"},
+  {"question":"What is the hardest natural substance?","option1":"Gold","option2":"Iron","option3":"Diamond","option4":"Quartz","answer":"option3","level":2,"hint":"Used in engagement rings"},
+  {"question":"How many chambers does the human heart have?","option1":"2","option2":"3","option3":"4","option4":"5","answer":"option3","level":2,"hint":"Two atria and two ventricles"},
+  {"question":"What type of animal is a whale?","option1":"Fish","option2":"Reptile","option3":"Amphibian","option4":"Mammal","answer":"option4","level":2,"hint":"It breathes air and nurses its young"},
+  {"question":"Which planet is known as the Red Planet?","option1":"Venus","option2":"Mars","option3":"Jupiter","option4":"Saturn","answer":"option2","level":1,"hint":"4th planet from the Sun"},
+  {"question":"What is the speed of light?","option1":"3 lakh km/s","option2":"1 lakh km/s","option3":"5 lakh km/s","option4":"2 lakh km/s","answer":"option1","level":3,"hint":"About 300,000 km per second"}
+]
