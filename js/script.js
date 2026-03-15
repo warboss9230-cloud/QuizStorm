@@ -63,6 +63,40 @@ const I18N = {
     recentHistory: 'Recent History', subjectPerf: 'Subject Performance', overallStats: 'Overall Stats',
     totalGames: 'Total Games', bestStreak: 'Best Streak', avgScore: 'Avg Score',
     top10: 'Top 10 Players',
+    selectGameMode: 'Select Game Mode',
+    dailyChallenge: 'Daily Challenge', bonusXPSub: '+50 Bonus XP • Once per day',
+    leaderboard: 'Leaderboard', leaderboardSub: 'Top 10 players by XP',
+    freePlayDesc: 'No time limit. Relax and learn!',
+    timerModeDesc: '30 seconds per question',
+    levelModeDesc: 'Choose difficulty level 1–10',
+    challengeDesc2: "3 lives — don't mess up!",
+    pvpDesc: 'Battle a friend on same device',
+    chooseLevel: 'Choose Level',
+    startLevelQuiz: '▶ Start Level Quiz',
+    playerProfile: 'Player Profile',
+    switchPlayer: 'Switch Player',
+    addNewPlayer: '➕ Add New Player',
+    deleteAccount: '🗑️ Delete',
+    badgesEarned: 'Badges Earned',
+    changeAvatar: 'Change Avatar',
+    selectClass: 'Select Class',
+    selectSubject: 'Select Subject',
+    mixQuizTitle: 'MIX QUIZ',
+    mixQuizSub: 'Combine multiple subjects!',
+    startMixQuiz: '🎲 Start Mix Quiz',
+    questions: 'Questions:',
+    levelFirst: 'पहले पूरा करो!',
+    correct2: 'Correct ✅', wrong2: 'Wrong ❌', xpEarned: 'XP ⚡',
+    totalXP2: 'Total XP',
+    hintBtn: '💡 Hint (-3 XP)',
+    quitQuiz: 'Quit quiz?',
+    overallStats: 'Overall Stats',
+    subjectPerf: 'Subject Performance',
+    recentHistory: 'Recent History',
+    avgScore2: 'Average Score',
+    noBadges: 'No badges yet',
+    noHistory: 'No quiz history yet.',
+    oncePerDay: 'One attempt per day. Bonus XP awaits!',
   },
   hi: {
     start: 'क्विज़ शुरू करें', addPlayer: '+ खिलाड़ी जोड़ें', twoPlayer: '⚔️ 2 खिलाड़ी',
@@ -91,35 +125,41 @@ const I18N = {
     recentHistory: 'हाल का इतिहास', subjectPerf: 'विषय प्रदर्शन', overallStats: 'समग्र आँकड़े',
     totalGames: 'कुल खेल', bestStreak: 'सर्वश्रेष्ठ स्ट्रीक', avgScore: 'औसत स्कोर',
     top10: 'शीर्ष 10 खिलाड़ी',
+    selectGameMode: 'गेम मोड चुनें',
+    dailyChallenge: 'दैनिक चुनौती', bonusXPSub: '+50 बोनस XP • प्रतिदिन एक बार',
+    leaderboard: 'लीडरबोर्ड', leaderboardSub: 'XP से शीर्ष 10 खिलाड़ी',
+    freePlayDesc: 'कोई समय सीमा नहीं। आराम से सीखें!',
+    timerModeDesc: 'प्रति प्रश्न 30 सेकंड',
+    levelModeDesc: 'कठिनाई स्तर 1–10 चुनें',
+    challengeDesc2: '3 जीवन — ध्यान से!',
+    pvpDesc: 'एक दोस्त के साथ लड़ाई',
+    chooseLevel: 'स्तर चुनें',
+    startLevelQuiz: '▶ स्तर क्विज़ शुरू करें',
+    playerProfile: 'खिलाड़ी प्रोफ़ाइल',
+    switchPlayer: 'खिलाड़ी बदलें',
+    addNewPlayer: '➕ नया खिलाड़ी जोड़ें',
+    deleteAccount: '🗑️ हटाएं',
+    badgesEarned: 'अर्जित बैज',
+    changeAvatar: 'अवतार बदलें',
+    selectClass: 'कक्षा चुनें',
+    selectSubject: 'विषय चुनें',
+    mixQuizTitle: 'मिक्स क्विज़',
+    mixQuizSub: 'कई विषय मिलाएं!',
+    startMixQuiz: '🎲 मिक्स क्विज़ शुरू करें',
+    questions: 'प्रश्न:',
+    levelFirst: 'पहले पूरा करो!',
+    correct2: 'सही ✅', wrong2: 'गलत ❌', xpEarned: 'XP ⚡',
+    totalXP2: 'कुल XP',
+    hintBtn: '💡 संकेत (-3 XP)',
+    quitQuiz: 'क्विज़ छोड़ें?',
+    overallStats: 'समग्र आँकड़े',
+    subjectPerf: 'विषय प्रदर्शन',
+    recentHistory: 'हाल का इतिहास',
+    avgScore2: 'औसत स्कोर',
+    noBadges: 'अभी कोई बैज नहीं',
+    noHistory: 'अभी कोई क्विज़ इतिहास नहीं।',
+    oncePerDay: 'प्रतिदिन एक प्रयास। बोनस XP इंतजार कर रहा है!',
   },
-  mr: {
-    start: 'क्विझ सुरू करा', addPlayer: '+ खेळाडू जोडा', twoPlayer: '⚔️ 2 खेळाडू',
-    leaderboard: 'लीडरबोर्ड', dashboard: 'डॅशबोर्ड', badges: 'बॅज', daily: 'दैनिक',
-    selectClass: 'वर्ग निवडा', selectSubject: 'विषय निवडा', selectMode: 'मोड निवडा',
-    freePlay: 'फ्री प्ले', timerMode: 'टायमर मोड', levelMode: 'लेव्हल मोड', challenge: 'आव्हान',
-    freeDesc: 'वेळ मर्यादा नाही.', timerDesc: 'प्रति प्रश्न 30 सेकंद!',
-    levelDesc: 'अडचणीनुसार फिल्टर', challengeDesc: '3 जीव. काळजी घ्या!',
-    question: 'प्रश्न', hint: '💡 संकेत (-3 XP)', next: 'पुढे →',
-    correct: 'बरोबर!', wrong: 'चूक!', timeUp: 'वेळ संपला!',
-    results: 'निकाल', playAgain: 'पुन्हा खेळा', home: 'होम',
-    streak: 'स्ट्रीक', xp: 'XP', badges: 'बॅज', games: 'खेळ',
-    yourName: 'तुमचे नाव...', enterName: 'नाव टाका',
-    mixQuiz: 'मिक्स क्विझ', mixDesc: 'अनेक विषय एकत्र करा!',
-    selectSubjects: 'विषय निवडा:', questions: 'प्रश्न:',
-    startMix: 'मिक्स क्विझ सुरू करा',
-    gradeA: '🏆 अप्रतिम!', gradeB: '⭐ छान!', gradeC: '👍 चांगले काम!', gradeD: '📚 सराव सुरू ठेवा!',
-    dailyChallenge: 'दैनिक आव्हान', bonusXP: '+50 बोनस XP',
-    alreadyDone: 'आजचे आव्हान पूर्ण केले! उद्या परत या.',
-    startChallenge: 'आव्हान सुरू करा',
-    levelSelect: 'स्तर निवडा:', startLevel: 'स्तर क्विझ सुरू करा',
-    newBadge: '🎉 नवीन बॅज मिळाला!', totalXP: 'एकूण XP',
-    vs: 'विरुद्ध', player1Turn: " ची वेळ", winnerIs: '🏆 विजेता: ', tieGame: "🤝 बरोबरी!",
-    switchTurn: "तयार व्हा!", switchDesc: "डिव्हाइस द्या", ready: "मी तयार आहे!",
-    noQuestions: 'या निवडीसाठी प्रश्न आढळले नाहीत.',
-    recentHistory: 'अलीकडील इतिहास', subjectPerf: 'विषय कामगिरी', overallStats: 'एकूण आकडेवारी',
-    totalGames: 'एकूण खेळ', bestStreak: 'सर्वोत्तम स्ट्रीक', avgScore: 'सरासरी स्कोअर',
-    top10: 'शीर्ष 10 खेळाडू',
-  }
 };
 
 // ===== STATE =====
@@ -182,143 +222,10 @@ function loadQuizHistory() {
 }
 function saveQuizHistory() { localStorage.setItem('qs_history', JSON.stringify(state.quizHistory.slice(-50))); }
 
-// ===== CANVAS BG =====
-const BG_TYPES = [
-  { id:'emojis',   label:'Emojis',   emoji:'✨' },
-  { id:'stars',    label:'Stars',    emoji:'⭐' },
-  { id:'bubbles',  label:'Bubbles',  emoji:'🫧' },
-  { id:'matrix',   label:'Matrix',   emoji:'💻' },
-  { id:'fireworks',label:'Fireworks',emoji:'🎆' },
-  { id:'snow',     label:'Snow',     emoji:'❄️' },
-  { id:'hearts',   label:'Hearts',   emoji:'❤️' },
-  { id:'galaxy',   label:'Galaxy',   emoji:'🌌' },
-  { id:'confetti', label:'Confetti', emoji:'🎊' },
-  { id:'none',     label:'Off',      emoji:'⬛' },
-];
-let currentBgType = 'emojis';
-let bgAnimFrame = null;
-let bgParticles = [];
-
-function initBgSwitcher() {
-  const wrap = document.getElementById('bg-sw-btns');
-  if (!wrap || wrap.children.length > 0) return;
-  BG_TYPES.forEach(bt => {
-    const b = document.createElement('button');
-    b.className = 'bg-sw-btn' + (bt.id === currentBgType ? ' active' : '');
-    b.title = bt.label;
-    b.textContent = bt.emoji;
-    b.onclick = () => {
-      currentBgType = bt.id;
-      localStorage.setItem('qs_bg', bt.id);
-      wrap.querySelectorAll('.bg-sw-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      startBgAnimation();
-    };
-    wrap.appendChild(b);
-  });
-}
-
-function initCanvas() {
-  currentBgType = localStorage.getItem('qs_bg') || 'emojis';
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    buildParticles();
-  });
-  startBgAnimation();
-}
-
-function buildParticles() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  const W = canvas.width, H = canvas.height;
-  const type = currentBgType;
-  if (type === 'none') { bgParticles = []; return; }
-  const count = type === 'matrix' ? 60 : type === 'snow' ? 80 : type === 'confetti' ? 55 : 45;
-
-  const emojiSets = {
-    emojis:    ['⚡','🌟','🎯','🔥','💫','✨','🎮','📚','🏆','🎲','🧠','🎪'],
-    stars:     ['⭐','🌟','💫','✨','🌠','⭐','🌟'],
-    bubbles:   ['⭕','🔵','🟣','🔴','🟡','🟢','🟠'],
-    hearts:    ['❤️','💛','💚','💙','💜','🩷','🧡','🤍'],
-    fireworks: ['🎆','✨','💥','🌟','⭐','🎇','🔥'],
-    snow:      ['❄️','❄️','❄️','🌨️','❅','❆'],
-    galaxy:    ['🌌','⭐','🪐','🌠','💫','🌙','☄️'],
-    confetti:  ['🎊','🎉','🎈','🎀','🎁','🎊','🎉'],
-  };
-
-  bgParticles = Array.from({length: count}, () => ({
-    x: Math.random() * W, y: Math.random() * H,
-    emoji: type === 'matrix' ? String.fromCharCode(0x30A0 + Math.random()*96|0) : (emojiSets[type]||emojiSets.emojis)[Math.floor(Math.random()*(emojiSets[type]||emojiSets.emojis).length)],
-    size: type === 'matrix' ? 13+Math.random()*10 : type === 'snow' ? 12+Math.random()*18 : type === 'confetti' ? 10+Math.random()*12 : 16+Math.random()*22,
-    speedX: type === 'snow' ? (Math.random()-0.5)*0.7 : (Math.random()-0.5)*0.5,
-    speedY: type === 'snow' ? 0.5+Math.random()*0.8 : -0.25-Math.random()*0.5,
-    opacity: type === 'matrix' ? 0.75+Math.random()*0.25 : 0.35+Math.random()*0.45,
-    color: type === 'matrix' ? `hsl(${120+Math.random()*30},100%,${60+Math.random()*30}%)` : null,
-    spin: Math.random() * Math.PI * 2,
-    spinSpeed: (Math.random()-0.5)*0.04,
-  }));
-}
-
-function startBgAnimation() {
-  if (bgAnimFrame) cancelAnimationFrame(bgAnimFrame);
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  buildParticles();
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const W = canvas.width, H = canvas.height;
-    if (currentBgType === 'none') { bgAnimFrame = requestAnimationFrame(draw); return; }
-
-    bgParticles.forEach(p => {
-      ctx.save();
-      ctx.globalAlpha = p.opacity;
-      if (currentBgType === 'matrix') {
-        ctx.fillStyle = p.color;
-        ctx.font = `bold ${p.size}px monospace`;
-        ctx.fillText(p.emoji, p.x, p.y);
-        p.emoji = String.fromCharCode(0x30A0 + Math.random()*96|0);
-      } else if (currentBgType === 'bubbles') {
-        const colors = ['rgba(59,130,246,','rgba(168,85,247,','rgba(239,68,68,','rgba(247,197,46,'];
-        ctx.strokeStyle = colors[Math.floor(Math.random()*colors.length)] + '0.5)';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-        ctx.stroke();
-        ctx.fillStyle = colors[Math.floor(Math.random()*colors.length)] + '0.05)';
-        ctx.fill();
-      } else if (currentBgType === 'confetti') {
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.spin);
-        ctx.fillStyle = ['#f7c52e','#ff6b6b','#a855f7','#22c55e','#3b82f6'][Math.floor(Math.random()*5)];
-        ctx.fillRect(-p.size/2, -p.size/4, p.size, p.size/2);
-        p.spin += p.spinSpeed;
-      } else {
-        ctx.font = `${p.size}px serif`;
-        ctx.fillText(p.emoji, p.x, p.y);
-      }
-      ctx.restore();
-
-      p.x += p.speedX; p.y += p.speedY;
-      if (currentBgType === 'snow') {
-        if (p.y > H+20) { p.y = -20; p.x = Math.random()*W; }
-      } else {
-        if (p.y < -40) { p.y = H+20; p.x = Math.random()*W; }
-      }
-      if (p.x < -40) p.x = W+20;
-      if (p.x > W+40) p.x = -20;
-    });
-    ctx.globalAlpha = 1;
-    bgAnimFrame = requestAnimationFrame(draw);
-  }
-  draw();
-}
+// Canvas BG removed
+function initCanvas() {}
+function startBgAnimation() {}
+function initBgSwitcher() {}
 
 // ===== SCREEN NAV =====
 function showScreen(id) {
@@ -332,7 +239,7 @@ function updateDatetime() {
   const el = document.getElementById('topbar-time');
   if (!el) return;
   const now = new Date();
-  el.textContent = now.toLocaleString(state.lang === 'hi' ? 'hi-IN' : state.lang === 'mr' ? 'mr-IN' : 'en-IN', {
+  el.textContent = now.toLocaleString(state.lang === 'hi' ? 'hi-IN' : 'en-IN', {
     weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
   });
 }
@@ -365,7 +272,7 @@ function soundTick()    { playBeep(440, 0.05, 'square', 0.1); }
 
 // ===== DATETIME =====
 function updateDatetime() {
-  const locale = state.lang === 'hi' ? 'hi-IN' : state.lang === 'mr' ? 'mr-IN' : 'en-IN';
+  const locale = state.lang === 'hi' ? 'hi-IN' : 'en-IN';
   const opts = { weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' };
   const str = new Date().toLocaleString(locale, opts);
   ['topbar-time','profile-datetime'].forEach(id => {
@@ -383,7 +290,6 @@ function renderHome() {
   renderHomeModeCards();
   updateDailyBanner();
   updateHamburgerLangBtns();
-  initBgSwitcher();
 }
 
 function renderTopbarPlayer() {
@@ -400,45 +306,42 @@ function renderTopbarPlayer() {
 }
 
 function renderHomeModeCards() {
-  const grid = document.getElementById('home-mode-grid');
-  if (!grid) return;
-  grid.querySelectorAll('.gm-card').forEach(c => {
-    c.classList.toggle('selected', c.dataset.mode === state.gameMode);
-    // Apply color class
-    c.classList.remove('gm-green','gm-blue','gm-purple','gm-red','gm-orange');
-    if (c.dataset.color) c.classList.add('gm-' + c.dataset.color);
-    c.onclick = () => {
-      state.gameMode = c.dataset.mode;
-      grid.querySelectorAll('.gm-card').forEach(x => x.classList.remove('selected'));
-      c.classList.add('selected');
-      // Show/hide level selector
-      const lvlSel = document.getElementById('home-level-selector');
-      if (lvlSel) {
-        lvlSel.style.display = (c.dataset.mode === 'level') ? 'block' : 'none';
-        if (c.dataset.mode === 'level') renderHomeLevelGrid();
-      }
-    };
-  });
+  // Cards are now onclick in HTML - just hide level selector on home render
+  const lvlSel = document.getElementById('home-level-selector');
+  if (lvlSel) lvlSel.style.display = 'none';
 }
 
 function renderHomeLevelGrid() {
   const grid = document.getElementById('home-level-grid');
   if (!grid) return;
-  if (grid.children.length > 0) return; // already rendered
-  grid.innerHTML = '';
+  grid.innerHTML = ''; // always re-render to reflect latest unlock status
+  const p = getActiveProfile();
+  const lvlKey = `${state.selectedClass}_${state.selectedSubject || 'mix'}`;
+  const maxUnlocked = p && p.completedLevels && p.completedLevels[lvlKey]
+    ? p.completedLevels[lvlKey] + 1  // next level after highest completed
+    : 1; // only level 1 unlocked initially
+
   for (let i = 1; i <= 10; i++) {
+    const unlocked = i <= maxUnlocked;
     const d = document.createElement('div');
-    d.className = 'level-chip' + (state.selectedLevel === i ? ' selected' : '');
-    d.textContent = i;
-    d.onclick = () => {
-      state.selectedLevel = i;
-      grid.querySelectorAll('.level-chip').forEach(c => c.classList.toggle('selected', parseInt(c.textContent) === i));
-    };
+    d.className = 'level-chip' + (state.selectedLevel === i ? ' selected' : '') + (unlocked ? '' : ' locked');
+    d.innerHTML = unlocked ? `${i}` : `🔒`;
+    d.title = unlocked ? `Level ${i}` : `Complete Level ${i-1} first (score ≥ 50%)`;
+    if (unlocked) {
+      d.onclick = () => {
+        state.selectedLevel = i;
+        grid.querySelectorAll('.level-chip').forEach(c => c.classList.toggle('selected', parseInt(c.textContent) === i));
+      };
+    } else {
+      d.style.cursor = 'not-allowed';
+      d.onclick = () => showXPToast(`🔒 Level ${i-1} ${t('levelFirst')}`, 'var(--wrong)');
+    }
     grid.appendChild(d);
   }
-  if (!state.selectedLevel) {
+  // auto select level 1 if nothing selected or selected level is locked
+  if (!state.selectedLevel || state.selectedLevel > maxUnlocked) {
     state.selectedLevel = 1;
-    grid.querySelector('.level-chip').classList.add('selected');
+    grid.querySelector('.level-chip:not(.locked)')?.classList.add('selected');
   }
 }
 
@@ -447,6 +350,7 @@ function updateDailyBanner() {
   if (!banner) return;
   const done = localStorage.getItem('qs_daily_done') === new Date().toDateString();
   banner.classList.toggle('done', done);
+  banner.classList.toggle('daily-banner', !done); if(done) banner.querySelector('.hbc-title') && (banner.querySelector('.hbc-title').dataset.done='true');
 }
 
 function updateHamburgerLangBtns() {
@@ -470,7 +374,7 @@ function openProfile() {
   // Hero section
   document.getElementById('profile-hero-avatar').textContent = p ? p.avatar : '🦊';
   document.getElementById('profile-hero-name').textContent = p ? p.name : 'Guest';
-  document.getElementById('profile-hero-xp').textContent = `⚡ ${p ? p.xp : 0} XP`;
+  document.getElementById('profile-hero-xp').textContent = `⚡ ${p ? p.xp : 0} ${t('xp')}`;
   // Stats
   document.getElementById('profile-xp').textContent = p ? (p.xp||0) : 0;
   document.getElementById('profile-streak').textContent = p ? (p.bestStreak||0) : 0;
@@ -480,7 +384,7 @@ function openProfile() {
   if (br) {
     const earned = p?.badges || [];
     if (earned.length === 0) {
-      br.innerHTML = '<span style="font-size:0.8rem;color:var(--text2)">No badges yet</span>';
+      br.innerHTML = `<span style="font-size:0.8rem;color:var(--text2)">${t('noBadges')}</span>`;
     } else {
       br.innerHTML = earned.map(id => {
         const b = BADGES.find(x=>x.id===id);
@@ -558,14 +462,34 @@ function openSettings() {
 
 // ===== HOME START =====
 function handleHomeStart() {
-  if (state.gameMode === 'pvp') {
+  handleModeClick(state.gameMode);
+}
+
+function handleModeClick(mode) {
+  state.gameMode = mode;
+  const p = getActiveProfile();
+  if (!p) { openAddPlayer(); return; }
+
+  if (mode === 'pvp') {
     if (state.profiles.length < 2) { openAddPlayer(); return; }
     show2PlayerModal();
     return;
   }
-  if (state.gameMode === 'level' && !state.selectedLevel) {
-    state.selectedLevel = 1;
+  if (mode === 'level') {
+    // Show level selector inline
+    const lvlSel = document.getElementById('home-level-selector');
+    if (lvlSel) {
+      lvlSel.style.display = 'block';
+      renderHomeLevelGrid();
+      lvlSel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    return;
   }
+  renderClassSelect();
+}
+
+function confirmLevelAndStart() {
+  if (!state.selectedLevel) state.selectedLevel = 1;
   renderClassSelect();
 }
 
@@ -598,26 +522,44 @@ function renderPlayersChips() {
   const wrap = document.getElementById('players-chips');
   if (!wrap) return;
   wrap.innerHTML = '';
-  if (state.profiles.length === 0) return;
+  if (state.profiles.length === 0) {
+    wrap.innerHTML = '<p style="color:var(--text2);font-size:0.82rem;padding:0.5rem 0">No players yet. Add one!</p>';
+    return;
+  }
   state.profiles.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0;border-bottom:1px solid var(--border);';
+
+    // Switch chip
     const chip = document.createElement('div');
     chip.className = 'player-chip' + (i === state.activeProfileIdx ? ' active' : '');
-    chip.innerHTML = `<span>${p.avatar}</span><span>${p.name}</span><span class="del-p" data-idx="${i}" title="Remove">✕</span>`;
-    chip.onclick = (e) => {
-      if (e.target.classList.contains('del-p')) {
-        const idx = parseInt(e.target.dataset.idx);
-        state.profiles.splice(idx, 1);
-        if (state.activeProfileIdx >= state.profiles.length) state.activeProfileIdx = Math.max(0, state.profiles.length - 1);
-        saveProfiles(); saveActiveIdx(); renderHome();
-        return;
-      }
-      state.activeProfileIdx = i; saveActiveIdx(); renderHome();
+    chip.style.flex = '1';
+    chip.innerHTML = `<span>${p.avatar}</span><span>${p.name}</span>`;
+    chip.onclick = () => { state.activeProfileIdx = i; saveActiveIdx(); openProfile(); };
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.style.cssText = 'background:rgba(239,68,68,0.12);border:1.5px solid rgba(239,68,68,0.35);color:#ef4444;padding:0.3rem 0.6rem;border-radius:0.5rem;cursor:pointer;font-size:0.78rem;font-weight:800;font-family:Nunito,sans-serif;white-space:nowrap;transition:all 0.15s;';
+    delBtn.textContent = '🗑️ Delete';
+    delBtn.title = 'Delete Account';
+    delBtn.onmouseenter = () => { delBtn.style.background = 'rgba(239,68,68,0.25)'; };
+    delBtn.onmouseleave = () => { delBtn.style.background = 'rgba(239,68,68,0.12)'; };
+    delBtn.onclick = () => {
+      if (!confirm(state.lang==='hi' ? `"${p.name}" को हटाएं? सारा डेटा खो जाएगा!` : `Delete "${p.name}"? All data will be lost!`)) return;
+      state.profiles.splice(i, 1);
+      if (state.activeProfileIdx >= state.profiles.length) state.activeProfileIdx = Math.max(0, state.profiles.length - 1);
+      saveProfiles(); saveActiveIdx();
+      openProfile();
     };
-    wrap.appendChild(chip);
+
+    row.appendChild(chip);
+    row.appendChild(delBtn);
+    wrap.appendChild(row);
   });
   // fill name input
   const p = getActiveProfile();
-  if (p) document.getElementById('name-input').value = p.name;
+  const ni = document.getElementById('name-input');
+  if (p && ni) ni.value = p.name;
 }
 
 function renderHomeStats() {
@@ -910,7 +852,7 @@ function renderQuestion() {
     const btn = document.getElementById(`opt-${i}`);
     btn.className = 'option-btn';
     btn.disabled = false;
-    btn.querySelector('.opt-label').textContent = labels[i];
+    const circle = btn.querySelector('.opt-circle'); if(circle) circle.textContent = labels[i];
     btn.querySelector('.opt-text').textContent = q[opt] || '';
     // Remove any leftover ::after from previous answer
     btn.style.removeProperty('--check');
@@ -926,7 +868,7 @@ function renderQuestion() {
 
   // Next btn
   document.getElementById('next-btn').classList.remove('visible');
-  document.getElementById('next-btn').textContent = state.currentQ === state.questions.length - 1 ? '🏁 Finish' : t('next');
+  document.getElementById('next-btn').textContent = state.currentQ === state.questions.length - 1 ? '🏁 ' + (state.lang==='hi' ? 'समाप्त' : 'Finish') : t('next');
 
   // Timer
   if (state.gameMode === 'timer') startTimer();
@@ -952,10 +894,21 @@ function startTimer() {
   const wrap = document.getElementById('timer-bar-wrap');
   wrap.classList.add('active');
   bar.style.width = '100%';
+  bar.style.background = '#22c55e'; // start green
   state.timerInterval = setInterval(() => {
     state.timerSecs--;
-    bar.style.width = (state.timerSecs / 30 * 100) + '%';
-    if (state.timerSecs <= 5) soundTick();
+    const pct = state.timerSecs / 30;
+    bar.style.width = (pct * 100) + '%';
+    // Smooth color: green(pct=1) → yellow(pct=0.5) → red(pct=0)
+    const r = Math.round(255 * (1 - pct) * 2).toString(16).padStart(2,'0').slice(-2);
+    const g = Math.round(255 * Math.min(pct * 2, 1)).toString(16).padStart(2,'0').slice(-2);
+    const rHex = Math.min(255, Math.round(255 * (1 - pct) * 2));
+    const gHex = Math.min(255, Math.round(255 * pct * 2));
+    bar.style.background = `rgb(${rHex},${gHex},0)`;
+    if (state.timerSecs <= 5) {
+      soundTick();
+      bar.style.background = '#ef4444'; // solid red final seconds
+    }
     if (state.timerSecs <= 0) {
       clearInterval(state.timerInterval);
       handleWrongAnswer(true);
@@ -1148,6 +1101,16 @@ function finishQuiz() {
   if (!p.subjectStats[subKey]) p.subjectStats[subKey] = { total: 0, correct: 0 };
   p.subjectStats[subKey].total += total;
   p.subjectStats[subKey].correct += correct;
+
+  // Level mode: unlock next level on passing (>=50%)
+  if (state.gameMode === 'level' && state.selectedLevel) {
+    if (!p.completedLevels) p.completedLevels = {};
+    const lvlKey = `${state.selectedClass}_${state.selectedSubject || 'mix'}`;
+    if (!p.completedLevels[lvlKey]) p.completedLevels[lvlKey] = 0;
+    if (pct >= 50 && state.selectedLevel >= p.completedLevels[lvlKey]) {
+      p.completedLevels[lvlKey] = state.selectedLevel; // highest completed level
+    }
+  }
 
   // Check badges
   const newBadges = checkBadges(p, pct, state.streak);
