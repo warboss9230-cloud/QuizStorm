@@ -625,7 +625,9 @@ function renderQuestion() {
     btn.className = 'option-btn';
     btn.disabled = false;
     btn.querySelector('.opt-label').textContent = labels[i];
-    btn.querySelector('.opt-text').textContent = q[opt];
+    btn.querySelector('.opt-text').textContent = q[opt] || '';
+    // Remove any leftover ::after from previous answer
+    btn.style.removeProperty('--check');
     btn.onclick = () => answerQuestion(opt);
   });
 
