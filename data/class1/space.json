@@ -1,0 +1,12 @@
+[
+  {"question":"How many planets are in our solar system?","option1":"7","option2":"9","option3":"8","option4":"10","answer":"option3","level":1,"hint":"After Pluto was reclassified"},
+  {"question":"What is the largest planet?","option1":"Saturn","option2":"Neptune","option3":"Uranus","option4":"Jupiter","answer":"option4","level":1,"hint":"Has the Great Red Spot"},
+  {"question":"How long does Earth take to orbit the Sun?","option1":"365 days","option2":"30 days","option3":"24 hours","option4":"7 days","answer":"option1","level":1,"hint":"One year"},
+  {"question":"What is the name of Earth's natural satellite?","option1":"Titan","option2":"Europa","option3":"Moon","option4":"Phobos","answer":"option3","level":1,"hint":"We see it every night"},
+  {"question":"Which planet has rings?","option1":"Mars","option2":"Venus","option3":"Mercury","option4":"Saturn","answer":"option4","level":1,"hint":"Famous for its beautiful rings"},
+  {"question":"What is a shooting star made of?","option1":"Fire","option2":"Meteor/Space rock","option3":"Ice","option4":"Gas","answer":"option2","level":2,"hint":"Rock burning in atmosphere"},
+  {"question":"Who was the first human on the moon?","option1":"Buzz Aldrin","option2":"Neil Armstrong","option3":"Yuri Gagarin","option4":"John Glenn","answer":"option2","level":2,"hint":"July 1969"},
+  {"question":"What is the closest planet to the Sun?","option1":"Venus","option2":"Earth","option3":"Mars","option4":"Mercury","answer":"option4","level":2,"hint":"Smallest planet too"},
+  {"question":"What is a light year?","option1":"Time taken by light in a year","option2":"Distance light travels in a year","option3":"Speed of a spaceship","option4":"Age of a star","answer":"option2","level":3,"hint":"It's a unit of distance"},
+  {"question":"What is the name of our galaxy?","option1":"Andromeda","option2":"Triangulum","option3":"Milky Way","option4":"Sombrero","answer":"option3","level":1,"hint":"Looks like a milky band in the night sky"}
+]
