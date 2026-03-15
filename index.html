@@ -19,15 +19,9 @@
     <div class="top-bar">
       <div class="player-topbar" id="player-topbar" onclick="openProfile()">
         <span id="topbar-avatar">🦊</span>
-        <div>
-          <div id="topbar-name">Guest</div>
-          <div id="topbar-xp">⚡ 0 XP</div>
-        </div>
+        <span id="topbar-name">Guest</span>
       </div>
       <div class="top-right-icons">
-        <button class="icon-btn" title="Top 10" onclick="renderLeaderboard()">🏆</button>
-        <button class="icon-btn" title="Dashboard" onclick="renderDashboard()">📊</button>
-        <button class="icon-btn" title="Badges" onclick="renderBadgesScreen()">🎖️</button>
         <span id="topbar-time"></span>
         <button class="icon-btn" onclick="toggleHamburger()">☰</button>
       </div>
@@ -59,25 +53,34 @@
       <div class="dhb-arrow">▶</div>
     </div>
 
-    <!-- GAME MODE (same style as Daily Challenge - expandable cards, no separate button) -->
+    <!-- GAME MODE - Colorful cards -->
     <div class="section-label" style="margin-top:0.75rem">Select Game Mode</div>
     <div class="game-mode-list" id="home-mode-grid">
-      <div class="gm-card selected" data-mode="free">
+      <div class="gm-card selected" data-mode="free" data-color="green">
         <div class="gm-left"><div class="gm-icon">🎮</div><div><div class="gm-name">Free Play</div><div class="gm-desc">No time limit. Relax and learn!</div></div></div>
         <div class="gm-check">✓</div>
       </div>
-      <div class="gm-card" data-mode="timer">
+      <div class="gm-card" data-mode="timer" data-color="blue">
         <div class="gm-left"><div class="gm-icon">⏱️</div><div><div class="gm-name">Timer Mode</div><div class="gm-desc">30 seconds per question</div></div></div>
         <div class="gm-check">✓</div>
       </div>
-      <div class="gm-card" data-mode="challenge">
+      <div class="gm-card" data-mode="level" data-color="purple">
+        <div class="gm-left"><div class="gm-icon">📈</div><div><div class="gm-name">Level Mode</div><div class="gm-desc">Choose difficulty level 1–10</div></div></div>
+        <div class="gm-check">✓</div>
+      </div>
+      <div class="gm-card" data-mode="challenge" data-color="red">
         <div class="gm-left"><div class="gm-icon">💀</div><div><div class="gm-name">Challenge</div><div class="gm-desc">3 lives — don't mess up!</div></div></div>
         <div class="gm-check">✓</div>
       </div>
-      <div class="gm-card" data-mode="pvp">
+      <div class="gm-card" data-mode="pvp" data-color="orange">
         <div class="gm-left"><div class="gm-icon">⚔️</div><div><div class="gm-name">Player VS Player</div><div class="gm-desc">Battle a friend on same device</div></div></div>
         <div class="gm-check">✓</div>
       </div>
+    </div>
+    <!-- Level selector (shown when level mode selected) -->
+    <div id="home-level-selector" style="display:none;margin-top:0.5rem">
+      <div class="section-label">Choose Level</div>
+      <div class="level-grid" id="home-level-grid"></div>
     </div>
 
     <!-- START BUTTON -->
