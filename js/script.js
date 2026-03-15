@@ -263,34 +263,142 @@ function soundWrong()   { playBeep(200, 0.3, 'sawtooth', 0.2); }
 function soundBadge()   { [523,659,784,1047].forEach((f,i) => setTimeout(() => playBeep(f, 0.2), i*100)); }
 function soundTick()    { playBeep(440, 0.05, 'square', 0.1); }
 
+// ===== DATETIME =====
+function updateDatetime() {
+  const locale = state.lang === 'hi' ? 'hi-IN' : state.lang === 'mr' ? 'mr-IN' : 'en-IN';
+  const opts = { weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' };
+  const str = new Date().toLocaleString(locale, opts);
+  ['topbar-time','profile-datetime'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = str;
+  });
+}
+
 // ===== HOME SCREEN =====
 function renderHome() {
   showScreen('screen-home');
   updateDatetime();
-  renderLangBtns();
+  renderHomeStats();
+  renderTopbarPlayer();
+  renderHomeModeCards();
+  updateDailyBanner();
+  updateHamburgerLangBtns();
+}
+
+function renderTopbarPlayer() {
+  const p = getActiveProfile();
+  document.getElementById('topbar-avatar').textContent = p ? p.avatar : '🦊';
+  document.getElementById('topbar-name').textContent = p ? p.name : 'Guest';
+  document.getElementById('topbar-xp').textContent = `⚡ ${p ? p.xp : 0} XP`;
+  // hamburger header too
+  const hma = document.getElementById('hm-avatar');
+  const hmn = document.getElementById('hm-name');
+  const hmx = document.getElementById('hm-xp');
+  if (hma) hma.textContent = p ? p.avatar : '🦊';
+  if (hmn) hmn.textContent = p ? p.name : 'Guest';
+  if (hmx) hmx.textContent = `⚡ ${p ? p.xp : 0} XP`;
+}
+
+function renderHomeModeCards() {
+  const grid = document.getElementById('home-mode-grid');
+  if (!grid) return;
+  grid.querySelectorAll('.mode-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.mode === state.gameMode);
+    c.onclick = () => {
+      state.gameMode = c.dataset.mode;
+      grid.querySelectorAll('.mode-card').forEach(x => x.classList.remove('selected'));
+      c.classList.add('selected');
+    };
+  });
+}
+
+function updateDailyBanner() {
+  const banner = document.getElementById('daily-home-banner');
+  if (!banner) return;
+  const done = localStorage.getItem('qs_daily_done') === new Date().toDateString();
+  banner.classList.toggle('done', done);
+}
+
+function updateHamburgerLangBtns() {
+  document.querySelectorAll('.hm-lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+}
+
+// ===== HAMBURGER =====
+function toggleHamburger() {
+  const menu = document.getElementById('hamburger-menu');
+  const overlay = document.getElementById('hamburger-overlay');
+  const isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  if (!isOpen) renderTopbarPlayer();
+}
+
+// ===== PROFILE & ADD PLAYER =====
+function openProfile() {
+  showScreen('screen-profile');
+  updateDatetime();
   renderAvatarGrid();
   renderPlayersChips();
-  renderHomeStats();
-  renderTopIcons();
-  updateHomeI18n();
+  const p = getActiveProfile();
+  if (p) document.getElementById('name-input').value = p.name;
 }
 
-function renderTopIcons() {
-  document.getElementById('btn-lb').title = t('leaderboard');
-  document.getElementById('btn-dash').title = t('dashboard');
-  document.getElementById('btn-badges-top').title = t('badges');
-  document.getElementById('btn-daily').title = t('daily');
+function openAddPlayer() {
+  const modal = document.getElementById('modal-add-player');
+  const grid = document.getElementById('modal-avatar-grid');
+  grid.innerHTML = '';
+  let selectedAv = AVATARS[0];
+  AVATARS.forEach(av => {
+    const d = document.createElement('div');
+    d.className = 'avatar-option' + (av === selectedAv ? ' selected' : '');
+    d.textContent = av; d.dataset.av = av;
+    d.onclick = () => {
+      selectedAv = av;
+      grid.querySelectorAll('.avatar-option').forEach(x => x.classList.toggle('selected', x.dataset.av === av));
+    };
+    grid.appendChild(d);
+  });
+  modal._selectedAv = () => selectedAv;
+  document.getElementById('modal-name-input').value = '';
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('modal-name-input').focus(), 300);
 }
 
-function updateHomeI18n() {
-  document.getElementById('btn-start').textContent = t('start');
-  document.getElementById('btn-add-player').textContent = t('addPlayer');
-  document.getElementById('btn-2player').textContent = t('twoPlayer');
-  document.getElementById('name-input').placeholder = t('yourName');
+function confirmAddPlayer() {
+  const modal = document.getElementById('modal-add-player');
+  const name = document.getElementById('modal-name-input').value.trim();
+  if (!name) { document.getElementById('modal-name-input').style.borderColor='var(--wrong)'; return; }
+  const av = modal._selectedAv ? modal._selectedAv() : AVATARS[0];
+  const exists = state.profiles.findIndex(p => p.name.toLowerCase() === name.toLowerCase());
+  if (exists >= 0) { state.activeProfileIdx = exists; }
+  else {
+    state.profiles.push({ name, avatar: av, xp:0, streak:0, bestStreak:0, badges:[], games:0, history:[] });
+    state.activeProfileIdx = state.profiles.length - 1;
+  }
+  saveProfiles(); saveActiveIdx();
+  modal.classList.remove('open');
+  renderHome();
+  showXPToast('👋 Welcome, ' + name + '!', '#a855f7');
+}
+
+function openSettings() {
+  const dark = document.getElementById('setting-dark');
+  if (dark) dark.checked = state.theme === 'dark';
+  document.getElementById('modal-settings').classList.add('open');
+}
+
+// ===== HOME START =====
+function handleHomeStart() {
+  if (state.gameMode === 'pvp') {
+    if (state.profiles.length < 2) { openAddPlayer(); return; }
+    show2PlayerModal();
+    return;
+  }
+  renderClassSelect();
 }
 
 function renderLangBtns() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('.lang-btn,.hm-lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === state.lang);
   });
 }
@@ -348,26 +456,17 @@ function renderHomeStats() {
 
 // ===== ADD PLAYER =====
 function addPlayer() {
-  const nameEl = document.getElementById('name-input');
-  const name = nameEl.value.trim();
-  if (!name) { nameEl.focus(); nameEl.style.borderColor = 'var(--wrong)'; setTimeout(() => nameEl.style.borderColor = '', 1200); return; }
-  const av = document.querySelector('.avatar-option.selected')?.dataset.av || AVATARS[0];
-  const existing = state.profiles.findIndex(p => p.name.toLowerCase() === name.toLowerCase());
-  if (existing >= 0) { state.activeProfileIdx = existing; saveActiveIdx(); renderHome(); return; }
-  const profile = { name, avatar: av, xp: 0, streak: 0, bestStreak: 0, badges: [], games: 0, history: [], usedLangs: new Set() };
-  state.profiles.push(profile);
-  state.activeProfileIdx = state.profiles.length - 1;
-  saveProfiles(); saveActiveIdx();
-  renderHome();
-  showXPToast('👋 Welcome, ' + name + '!', '#a855f7');
+  openAddPlayer();
 }
 
 function saveCurrentName() {
-  const name = document.getElementById('name-input').value.trim();
+  const nameEl = document.getElementById('name-input');
+  if (!nameEl) return;
+  const name = nameEl.value.trim();
   if (!name) return;
   const p = getActiveProfile();
-  if (p) { p.name = name; saveProfiles(); renderPlayersChips(); }
-  else addPlayer();
+  if (p) { p.name = name; saveProfiles(); renderPlayersChips(); renderTopbarPlayer(); }
+  else { addPlayer(); }
 }
 
 // ===== CLASS SELECT =====
@@ -400,7 +499,7 @@ function renderSubjectSelect() {
     d.onclick = () => {
       state.selectedSubject = sub.id;
       state.isMixQuiz = false;
-      renderModeSelect();
+      startQuiz();
     };
     grid.appendChild(d);
   });
@@ -443,39 +542,18 @@ function startMixQuiz() {
   if (state.selectedSubjects.length === 0) { alert('Please select at least one subject!'); return; }
   state.isMixQuiz = true;
   state.mixCount = parseInt(document.getElementById('mix-count').value) || 10;
-  renderModeSelect();
+  startQuiz();
 }
 
 // ===== MODE SELECT =====
-function renderModeSelect() {
-  showScreen('screen-mode');
-  document.getElementById('mode-screen-title').textContent = t('selectMode');
-  state.gameMode = 'free';
-  document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
-  document.querySelector('.mode-card[data-mode="free"]')?.classList.add('selected');
-  document.getElementById('level-selector').style.display = 'none';
-  document.getElementById('btn-start-mode').textContent = t('start');
-  updateModeI18n();
-}
-
-function updateModeI18n() {
-  document.querySelectorAll('.mode-card').forEach(c => {
-    const m = c.dataset.mode;
-    c.querySelector('.m-name').textContent = t(m === 'free' ? 'freePlay' : m === 'timer' ? 'timerMode' : m === 'level' ? 'levelMode' : 'challenge');
-    c.querySelector('.m-desc').textContent = t(m === 'free' ? 'freeDesc' : m === 'timer' ? 'timerDesc' : m === 'level' ? 'levelDesc' : 'challengeDesc');
-  });
-}
-
+// Mode select now happens on home screen; this is kept for level mode flow
 function selectMode(mode) {
   state.gameMode = mode;
-  document.querySelectorAll('.mode-card').forEach(c => c.classList.toggle('selected', c.dataset.mode === mode));
-  const lvlSel = document.getElementById('level-selector');
-  lvlSel.style.display = mode === 'level' ? 'block' : 'none';
-  if (mode === 'level') renderLevelGrid();
 }
 
 function renderLevelGrid() {
   const grid = document.getElementById('level-grid');
+  if (!grid) return;
   grid.innerHTML = '';
   for (let i = 1; i <= 10; i++) {
     const d = document.createElement('div');
@@ -484,7 +562,7 @@ function renderLevelGrid() {
     d.onclick = () => { state.selectedLevel = i; grid.querySelectorAll('.level-chip').forEach(c => c.classList.toggle('selected', c.textContent == i)); };
     grid.appendChild(d);
   }
-  if (!state.selectedLevel) { state.selectedLevel = 1; grid.querySelector('.level-chip').classList.add('selected'); }
+  if (!state.selectedLevel) { state.selectedLevel = 1; grid.querySelector('.level-chip')?.classList.add('selected'); }
 }
 
 // ===== LOAD QUESTIONS =====
@@ -532,9 +610,8 @@ function shuffleArr(arr) {
 
 // ===== START QUIZ =====
 async function startQuiz(daily = false) {
-  saveCurrentName();
   const p = getActiveProfile();
-  if (!p) { document.getElementById('name-input').focus(); return; }
+  if (!p) { openAddPlayer(); return; }
 
   // Ensure class & subject set for non-daily
   if (!daily && !state.selectedClass) { renderClassSelect(); return; }
@@ -581,6 +658,11 @@ async function startQuiz(daily = false) {
 // ===== RENDER QUIZ =====
 function renderQuiz() {
   showScreen('screen-quiz');
+  const p = state.is2Player ? state.p2Profiles[state.currentPlayer] : getActiveProfile();
+  const nameEl = document.getElementById('quiz-player-name');
+  const avEl = document.getElementById('quiz-player-avatar');
+  if (nameEl) nameEl.textContent = p ? p.name : 'Player';
+  if (avEl) avEl.textContent = p ? p.avatar : '🦊';
   if (state.is2Player) showTurnBanner();
   renderQuestion();
 }
@@ -1144,8 +1226,9 @@ function cancel2Player() {
 function toggleTheme() {
   state.theme = state.theme === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', state.theme);
-  document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? '🌙' : '☀️';
   localStorage.setItem('qs_theme', state.theme);
+  const btn = document.getElementById('hm-theme-btn');
+  if (btn) btn.textContent = (state.theme === 'dark' ? '🌙' : '☀️') + ' Toggle Dark / Light';
 }
 
 // ===== LANG SWITCH =====
@@ -1155,7 +1238,6 @@ function switchLang(lang) {
   state.langHistory.add(lang);
   saveLangHistory();
   renderLangBtns();
-  updateHomeI18n();
   updateDatetime();
 }
 
@@ -1171,20 +1253,9 @@ function init() {
   if (state.activeProfileIdx >= state.profiles.length) state.activeProfileIdx = 0;
 
   document.documentElement.setAttribute('data-theme', state.theme);
-  document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? '🌙' : '☀️';
 
   initCanvas();
-  setInterval(updateDatetime, 30000);
-
-  // Lang buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.onclick = () => switchLang(btn.dataset.lang);
-  });
-
-  // Mode cards
-  document.querySelectorAll('.mode-card').forEach(c => {
-    c.onclick = () => selectMode(c.dataset.mode);
-  });
+  setInterval(updateDatetime, 10000);
 
   // Mix count slider
   const mixCount = document.getElementById('mix-count');
