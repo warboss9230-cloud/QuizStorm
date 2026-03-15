@@ -1,0 +1,12 @@
+[
+  {"question":"What do we breathe in?","option1":"Carbon dioxide","option2":"Nitrogen","option3":"Oxygen","option4":"Hydrogen","answer":"option3","level":1,"hint":"The gas plants produce"},
+  {"question":"Which is a natural resource?","option1":"Plastic","option2":"Water","option3":"Glass","option4":"Steel","answer":"option2","level":1,"hint":"Found in rivers and rain"},
+  {"question":"What should we do with garbage?","option1":"Throw on roads","option2":"Burn everything","option3":"Segregate and recycle","option4":"Dump in rivers","answer":"option3","level":1,"hint":"Separate wet and dry waste"},
+  {"question":"Which energy comes from the sun?","option1":"Wind energy","option2":"Hydro energy","option3":"Solar energy","option4":"Nuclear energy","answer":"option3","level":1,"hint":"Solar panels use this"},
+  {"question":"What is the study of environment called?","option1":"Biology","option2":"Ecology","option3":"Geology","option4":"Astronomy","answer":"option2","level":2,"hint":"Eco = environment"},
+  {"question":"Which gas causes global warming?","option1":"Oxygen","option2":"Nitrogen","option3":"Carbon dioxide","option4":"Argon","answer":"option3","level":2,"hint":"CO2"},
+  {"question":"Where do plants make food?","option1":"Roots","option2":"Flowers","option3":"Stem","option4":"Leaves","answer":"option4","level":1,"hint":"Photosynthesis happens here"},
+  {"question":"What do we call animals that eat only plants?","option1":"Carnivores","option2":"Omnivores","option3":"Herbivores","option4":"Predators","answer":"option3","level":2,"hint":"Herbi = plant"},
+  {"question":"Which is a renewable energy source?","option1":"Coal","option2":"Petroleum","option3":"Wind","option4":"Natural gas","answer":"option3","level":2,"hint":"Always available in nature"},
+  {"question":"What is rain water harvesting?","option1":"Wasting water","option2":"Collecting and storing rainwater","option3":"Drinking sea water","option4":"Making artificial rain","answer":"option2","level":2,"hint":"Collecting rain for later use"}
+]
