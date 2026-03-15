@@ -1,0 +1,12 @@
+[
+  {"question":"Which animal says 'Moo'?","option1":"Dog","option2":"Cat","option3":"Cow","option4":"Sheep","answer":"option3","level":1,"hint":"This animal gives us milk"},
+  {"question":"What do plants need to grow?","option1":"Sand","option2":"Sunlight","option3":"Ice","option4":"Rocks","answer":"option2","level":1,"hint":"Look up at the sky!"},
+  {"question":"How many legs does a spider have?","option1":"6","option2":"4","option3":"10","option4":"8","answer":"option4","level":1,"hint":"More than an insect"},
+  {"question":"Which is the largest planet?","option1":"Earth","option2":"Mars","option3":"Jupiter","option4":"Saturn","answer":"option3","level":2,"hint":"The planet with the Great Red Spot"},
+  {"question":"What do fish breathe with?","option1":"Lungs","option2":"Gills","option3":"Nose","option4":"Skin","answer":"option2","level":1,"hint":"These are on the sides of a fish"},
+  {"question":"What is the colour of the sky on a clear day?","option1":"Green","option2":"Red","option3":"Blue","option4":"Yellow","answer":"option3","level":1,"hint":"Look up on a sunny day"},
+  {"question":"Which bird cannot fly?","option1":"Eagle","option2":"Penguin","option3":"Parrot","option4":"Sparrow","answer":"option2","level":2,"hint":"Lives in cold Antarctica"},
+  {"question":"What do caterpillars become?","option1":"Beetles","option2":"Frogs","option3":"Butterflies","option4":"Worms","answer":"option3","level":1,"hint":"Beautiful flying insect"},
+  {"question":"How many colours are in a rainbow?","option1":"5","option2":"6","option3":"8","option4":"7","answer":"option4","level":2,"hint":"VIBGYOR"},
+  {"question":"Which is the closest star to Earth?","option1":"Moon","option2":"The Sun","option3":"Polaris","option4":"Sirius","answer":"option2","level":2,"hint":"We see it every day"}
+]
