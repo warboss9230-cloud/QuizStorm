@@ -1,0 +1,12 @@
+[
+  {"question":"Which is a vowel?","option1":"B","option2":"C","option3":"A","option4":"D","answer":"option3","level":1,"hint":"A, E, I, O, U"},
+  {"question":"What is the plural of 'cat'?","option1":"cates","option2":"cats","option3":"cat's","option4":"catz","answer":"option2","level":1,"hint":"Add an 's'"},
+  {"question":"Which word means the opposite of 'big'?","option1":"Large","option2":"Huge","option3":"Small","option4":"Tall","answer":"option3","level":1,"hint":"Not big, not large..."},
+  {"question":"How many letters are in the English alphabet?","option1":"24","option2":"25","option3":"27","option4":"26","answer":"option4","level":1,"hint":"A to Z"},
+  {"question":"Which is a noun?","option1":"Run","option2":"Happy","option3":"Apple","option4":"Quickly","answer":"option3","level":2,"hint":"A person, place or thing"},
+  {"question":"What comes after 'Once upon a ___'?","option1":"day","option2":"night","option3":"time","option4":"year","answer":"option3","level":1,"hint":"Classic story opener"},
+  {"question":"Which punctuation ends a question?","option1":"Full stop","option2":"Comma","option3":"Exclamation","option4":"Question mark","answer":"option4","level":1,"hint":"It's shaped like a hook with a dot"},
+  {"question":"What is the opposite of 'day'?","option1":"Morning","option2":"Evening","option3":"Night","option4":"Noon","answer":"option3","level":1,"hint":"When the stars come out"},
+  {"question":"Which word rhymes with 'cat'?","option1":"Dog","option2":"Bat","option3":"Cup","option4":"Run","answer":"option2","level":1,"hint":"A flying mammal"},
+  {"question":"Which is an action word (verb)?","option1":"Table","option2":"Blue","option3":"Jump","option4":"House","answer":"option3","level":2,"hint":"Something you do"}
+]
