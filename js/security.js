@@ -97,20 +97,38 @@ const QSecurity = (() => {
   }
 
   function showTamperOverlay(msg, permanent = false) {
-    let ov = document.getElementById('qs-tamper-overlay');
-    if (!ov) {
-      ov = document.createElement('div');
-      ov.id = 'qs-tamper-overlay';
-      ov.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,20,0.98);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:Nunito,sans-serif;text-align:center;padding:2rem;';
-      document.body.appendChild(ov);
-    }
-    ov.innerHTML = `<div style="font-size:3rem;margin-bottom:1rem;">🔒</div>
-      <h2 style="font-size:1.5rem;margin-bottom:0.5rem;">Quiz Terminated</h2>
-      <p style="font-size:1rem;margin-bottom:1.5rem;opacity:0.8;">${msg}</p>
-      ${!permanent ? `<button onclick="document.getElementById('qs-tamper-overlay').remove()" 
-        style="background:#6c63ff;color:#fff;border:none;padding:0.75rem 2rem;border-radius:2rem;font-size:1rem;cursor:pointer;font-weight:700;">
-        Go Home
-      </button>` : ''}`;
+    // Remove existing overlay first
+    const existing = document.getElementById('qs-tamper-overlay');
+    if (existing) existing.remove();
+
+    const ov = document.createElement('div');
+    ov.id = 'qs-tamper-overlay';
+    ov.style.cssText = [
+      'position:fixed;top:0;left:0;right:0;bottom:0',
+      'background:linear-gradient(135deg,#0d0d1a 0%,#1a0a2e 100%)',
+      'z-index:10000;display:flex;flex-direction:column',
+      'align-items:center;justify-content:center',
+      'color:#fff;font-family:Nunito,sans-serif;text-align:center;padding:2rem'
+    ].join(';');
+    document.body.appendChild(ov);
+
+    ov.innerHTML = `
+      <div style="font-size:5rem;margin-bottom:1.5rem;animation:none;">🔒</div>
+      <h2 style="font-size:1.8rem;font-weight:900;margin-bottom:0.75rem;color:#f7c52e;">Quiz Terminated</h2>
+      <p style="font-size:1rem;margin-bottom:2rem;opacity:0.75;max-width:280px;line-height:1.5;">${msg}</p>
+      <button id="qs-tamper-home"
+        style="background:linear-gradient(135deg,#f7c52e,#ff9a00);color:#1a1a2e;border:none;
+               padding:0.85rem 2.5rem;border-radius:2rem;font-size:1.05rem;cursor:pointer;
+               font-weight:900;font-family:Nunito,sans-serif;box-shadow:0 4px 20px rgba(247,197,46,0.4);">
+        🏠 Go Home
+      </button>`;
+
+    document.getElementById('qs-tamper-home').onclick = () => {
+      ov.remove();
+      stopQuiz();
+      // Navigate home if function exists
+      if (typeof renderHome === 'function') renderHome();
+    };
   }
 
   // --- Public API ---
