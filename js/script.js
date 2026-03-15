@@ -238,29 +238,29 @@ function buildParticles() {
   const W = canvas.width, H = canvas.height;
   const type = currentBgType;
   if (type === 'none') { bgParticles = []; return; }
-  const count = type === 'matrix' ? 40 : type === 'snow' ? 60 : 28;
+  const count = type === 'matrix' ? 60 : type === 'snow' ? 80 : type === 'confetti' ? 55 : 45;
 
   const emojiSets = {
-    emojis:    ['⚡','🌟','🎯','🔥','💫','✨','🎮','📚','🏆'],
-    stars:     ['⭐','🌟','💫','✨','🌠'],
-    bubbles:   ['⭕','🔵','🟣','🔴','🟡'],
-    hearts:    ['❤️','💛','💚','💙','💜','🩷'],
-    fireworks: ['🎆','✨','💥','🌟','⭐'],
-    snow:      ['❄️','🌨️','⛄','❅'],
-    galaxy:    ['🌌','⭐','🪐','🌠','💫'],
-    confetti:  ['🎊','🎉','🎈','🎀','🎁'],
+    emojis:    ['⚡','🌟','🎯','🔥','💫','✨','🎮','📚','🏆','🎲','🧠','🎪'],
+    stars:     ['⭐','🌟','💫','✨','🌠','⭐','🌟'],
+    bubbles:   ['⭕','🔵','🟣','🔴','🟡','🟢','🟠'],
+    hearts:    ['❤️','💛','💚','💙','💜','🩷','🧡','🤍'],
+    fireworks: ['🎆','✨','💥','🌟','⭐','🎇','🔥'],
+    snow:      ['❄️','❄️','❄️','🌨️','❅','❆'],
+    galaxy:    ['🌌','⭐','🪐','🌠','💫','🌙','☄️'],
+    confetti:  ['🎊','🎉','🎈','🎀','🎁','🎊','🎉'],
   };
 
   bgParticles = Array.from({length: count}, () => ({
     x: Math.random() * W, y: Math.random() * H,
     emoji: type === 'matrix' ? String.fromCharCode(0x30A0 + Math.random()*96|0) : (emojiSets[type]||emojiSets.emojis)[Math.floor(Math.random()*(emojiSets[type]||emojiSets.emojis).length)],
-    size: type === 'matrix' ? 10+Math.random()*8 : type === 'snow' ? 8+Math.random()*14 : 10+Math.random()*16,
-    speedX: type === 'snow' ? (Math.random()-0.5)*0.5 : (Math.random()-0.5)*0.35,
-    speedY: type === 'snow' ? 0.4+Math.random()*0.6 : -0.15-Math.random()*0.35,
-    opacity: type === 'matrix' ? 0.6+Math.random()*0.4 : 0.08+Math.random()*0.2,
-    color: type === 'matrix' ? `hsl(${120+Math.random()*30},100%,${50+Math.random()*30}%)` : null,
+    size: type === 'matrix' ? 13+Math.random()*10 : type === 'snow' ? 12+Math.random()*18 : type === 'confetti' ? 10+Math.random()*12 : 16+Math.random()*22,
+    speedX: type === 'snow' ? (Math.random()-0.5)*0.7 : (Math.random()-0.5)*0.5,
+    speedY: type === 'snow' ? 0.5+Math.random()*0.8 : -0.25-Math.random()*0.5,
+    opacity: type === 'matrix' ? 0.75+Math.random()*0.25 : 0.35+Math.random()*0.45,
+    color: type === 'matrix' ? `hsl(${120+Math.random()*30},100%,${60+Math.random()*30}%)` : null,
     spin: Math.random() * Math.PI * 2,
-    spinSpeed: (Math.random()-0.5)*0.02,
+    spinSpeed: (Math.random()-0.5)*0.04,
   }));
 }
 
@@ -390,7 +390,6 @@ function renderTopbarPlayer() {
   const p = getActiveProfile();
   document.getElementById('topbar-avatar').textContent = p ? p.avatar : '🦊';
   document.getElementById('topbar-name').textContent = p ? p.name : 'Guest';
-  document.getElementById('topbar-xp').textContent = `⚡ ${p ? p.xp : 0} XP`;
   // hamburger header too
   const hma = document.getElementById('hm-avatar');
   const hmn = document.getElementById('hm-name');
@@ -405,12 +404,42 @@ function renderHomeModeCards() {
   if (!grid) return;
   grid.querySelectorAll('.gm-card').forEach(c => {
     c.classList.toggle('selected', c.dataset.mode === state.gameMode);
+    // Apply color class
+    c.classList.remove('gm-green','gm-blue','gm-purple','gm-red','gm-orange');
+    if (c.dataset.color) c.classList.add('gm-' + c.dataset.color);
     c.onclick = () => {
       state.gameMode = c.dataset.mode;
       grid.querySelectorAll('.gm-card').forEach(x => x.classList.remove('selected'));
       c.classList.add('selected');
+      // Show/hide level selector
+      const lvlSel = document.getElementById('home-level-selector');
+      if (lvlSel) {
+        lvlSel.style.display = (c.dataset.mode === 'level') ? 'block' : 'none';
+        if (c.dataset.mode === 'level') renderHomeLevelGrid();
+      }
     };
   });
+}
+
+function renderHomeLevelGrid() {
+  const grid = document.getElementById('home-level-grid');
+  if (!grid) return;
+  if (grid.children.length > 0) return; // already rendered
+  grid.innerHTML = '';
+  for (let i = 1; i <= 10; i++) {
+    const d = document.createElement('div');
+    d.className = 'level-chip' + (state.selectedLevel === i ? ' selected' : '');
+    d.textContent = i;
+    d.onclick = () => {
+      state.selectedLevel = i;
+      grid.querySelectorAll('.level-chip').forEach(c => c.classList.toggle('selected', parseInt(c.textContent) === i));
+    };
+    grid.appendChild(d);
+  }
+  if (!state.selectedLevel) {
+    state.selectedLevel = 1;
+    grid.querySelector('.level-chip').classList.add('selected');
+  }
 }
 
 function updateDailyBanner() {
@@ -533,6 +562,9 @@ function handleHomeStart() {
     if (state.profiles.length < 2) { openAddPlayer(); return; }
     show2PlayerModal();
     return;
+  }
+  if (state.gameMode === 'level' && !state.selectedLevel) {
+    state.selectedLevel = 1;
   }
   renderClassSelect();
 }
@@ -685,18 +717,27 @@ function showMixPanel() {
 function renderMixSubjectList() {
   const list = document.getElementById('mix-subject-list');
   list.innerHTML = '';
+  state.selectedSubjects = []; // reset on re-render
   SUBJECTS.forEach(sub => {
     const label = document.createElement('label');
-    label.style.cssText = 'display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0;cursor:pointer;';
+    label.style.cssText = 'display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0;cursor:pointer;font-weight:700;font-size:0.9rem;border-bottom:1px solid var(--border);';
+    // Build checkbox separately to preserve event listener
     const chk = document.createElement('input');
-    chk.type = 'checkbox'; chk.value = sub.id;
-    chk.style.accentColor = 'var(--purple)';
-    chk.onchange = () => {
-      if (chk.checked) state.selectedSubjects.push(sub.id);
-      else state.selectedSubjects = state.selectedSubjects.filter(s => s !== sub.id);
-    };
+    chk.type = 'checkbox';
+    chk.value = sub.id;
+    chk.style.cssText = 'width:18px;height:18px;accent-color:var(--purple);cursor:pointer;flex-shrink:0;';
+    chk.addEventListener('change', () => {
+      if (chk.checked) {
+        if (!state.selectedSubjects.includes(sub.id)) state.selectedSubjects.push(sub.id);
+      } else {
+        state.selectedSubjects = state.selectedSubjects.filter(s => s !== sub.id);
+      }
+    });
+    // Build text span separately
+    const span = document.createElement('span');
+    span.textContent = sub.icon + ' ' + sub.name;
     label.appendChild(chk);
-    label.innerHTML += `<span>${sub.icon} ${sub.name}</span>`;
+    label.appendChild(span);
     list.appendChild(label);
   });
 }
