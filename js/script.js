@@ -10,6 +10,7 @@ const SUBJECTS = [
   { id: 'computer', name: 'Computer', icon: '💻', file: 'computer.json' },
   { id: 'evs',      name: 'EVS',      icon: '🌿', file: 'evs.json' },
   { id: 'gk',       name: 'GK',       icon: '🌍', file: 'gk.json' },
+  { id: 'economics',name: 'Econ',     icon: '📊', file: 'economics.json' },
   { id: 'space',    name: 'Space',    icon: '🚀', file: 'space.json' },
   { id: 'animals',  name: 'Animals',  icon: '🦁', file: 'animals.json' },
 ];
@@ -860,10 +861,7 @@ function renderQuestion() {
 
   // Hint
   state.hintUsed = false;
-  const hintBtn = document.getElementById('hint-btn');
-  hintBtn.disabled = false;
-  hintBtn.classList.remove('no-xp');
-  hintBtn.style.opacity = '';
+  updateHintBtnState();
 
   // Next btn
   document.getElementById('next-btn').classList.remove('visible');
@@ -964,9 +962,17 @@ function handleWrongAnswer(timeUp = false) {
   if (state.is2Player) {
     state.playerXP[state.currentPlayer] = Math.max(0, state.playerXP[state.currentPlayer] - loss);
     state.playerStreaks[state.currentPlayer] = 0;
+    // Update XP display immediately
+    document.getElementById('xp-display').textContent = `⚡ ${state.playerXP[state.currentPlayer]} ${t('xp')}`;
   } else {
     state.xpEarned = Math.max(0, state.xpEarned - loss);
     state.streak = 0;
+    // Update XP display immediately
+    document.getElementById('xp-display').textContent = `⚡ ${state.xpEarned} ${t('xp')}`;
+    // Low XP warning
+    if (state.xpEarned < 5) {
+      showXPToast('⚠️ Low XP! Hint unavailable!', '#f59e0b');
+    }
     if (state.gameMode === 'challenge') {
       state.lives--;
       renderLives();
@@ -979,12 +985,18 @@ function handleWrongAnswer(timeUp = false) {
   soundWrong();
   showXPToast(timeUp ? `⏰ ${t('timeUp')}` : `-${loss} XP ❌`, 'var(--wrong)');
   document.getElementById('streak-pill').classList.add('hidden');
+  // Disable hint if XP too low
+  updateHintBtnState();
 }
 
 function useHint() {
   if (state.hintUsed) return;
   const curXP = state.is2Player ? state.playerXP[state.currentPlayer] : state.xpEarned;
-  if (curXP <= 0) { showXPToast('No XP for hint! ❌', 'var(--wrong)'); return; }
+  if (curXP < 3) {
+    showXPToast('⚠️ XP kam hai! Hint nahi milega!', '#f59e0b');
+    updateHintBtnState();
+    return;
+  }
   const q = state.questions[state.currentQ];
   const correct = QSecurity.decryptAnswer(q._enc);
   const opts = ['option1','option2','option3','option4'];
@@ -996,8 +1008,9 @@ function useHint() {
   state.hintUsed = true;
   if (state.is2Player) state.playerXP[state.currentPlayer] = Math.max(0, state.playerXP[state.currentPlayer] - 3);
   else state.xpEarned = Math.max(0, state.xpEarned - 3);
-  document.getElementById('hint-btn').disabled = true;
-  document.getElementById('hint-btn').style.opacity = '0.4';
+  // Update display
+  document.getElementById('xp-display').textContent = `⚡ ${state.is2Player ? state.playerXP[state.currentPlayer] : state.xpEarned} ${t('xp')}`;
+  updateHintBtnState();
   showXPToast('-3 XP 💡', 'var(--purple)');
   if (q.hint) showHintText(q.hint);
 }
@@ -1011,6 +1024,24 @@ function showHintText(hint) {
     document.getElementById('quiz-actions-wrap').insertAdjacentElement('beforebegin', ht);
   }
   ht.textContent = '💡 ' + hint;
+}
+
+function updateHintBtnState() {
+  const hintBtn = document.getElementById('hint-btn');
+  if (!hintBtn) return;
+  const curXP = state.is2Player ? state.playerXP[state.currentPlayer] : state.xpEarned;
+  const noXP = curXP < 3; // need at least 3 XP to use hint
+  if (state.hintUsed || noXP) {
+    hintBtn.disabled = true;
+    hintBtn.classList.add('no-xp');
+    hintBtn.style.opacity = '0.35';
+    hintBtn.title = noXP ? '⚠️ XP kam hai! Hint nahi milega.' : 'Already used';
+  } else {
+    hintBtn.disabled = false;
+    hintBtn.classList.remove('no-xp');
+    hintBtn.style.opacity = '';
+    hintBtn.title = '';
+  }
 }
 
 function nextQuestion() {
