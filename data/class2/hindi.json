@@ -1,0 +1,73 @@
+[
+{"question":"📚 क से क्या होता है?","option1":"कमल","option2":"घर","option3":"नदी","option4":"रथ","answer":"option1","level":1,"hint":"एक फूल"},
+{"question":"✏️ ग से क्या होता है?","option1":"गाय","option2":"कुत्ता","option3":"बकरी","option4":"घोड़ा","answer":"option1","level":1,"hint":"दूध देती है"},
+{"question":"🐘 ह से क्या होता है?","option1":"हाथी","option2":"शेर","option3":"बिल्ली","option4":"कुत्ता","answer":"option1","level":1,"hint":"बहुत बड़ा जानवर"},
+{"question":"🌳 प से क्या होता है?","option1":"पेड़","option2":"घर","option3":"नदी","option4":"किताब","answer":"option1","level":1,"hint":"हरी पत्तियाँ"},
+{"question":"🍎 आ से क्या होता है?","option1":"आम","option2":"सेब","option3":"अंगूर","option4":"केला","answer":"option1","level":1,"hint":"पीला फल"},
+
+{"question":"🌞 सूरज कहाँ उगता है?","option1":"पूर्व","option2":"पश्चिम","option3":"उत्तर","option4":"दक्षिण","answer":"option1","level":1,"hint":"सुबह की दिशा"},
+{"question":"🌙 सूरज कहाँ डूबता है?","option1":"पूर्व","option2":"पश्चिम","option3":"उत्तर","option4":"दक्षिण","answer":"option2","level":1,"hint":"शाम"},
+{"question":"🐄 गाय हमें क्या देती है?","option1":"दूध","option2":"पानी","option3":"रस","option4":"चाय","answer":"option1","level":1,"hint":"सफेद पेय"},
+{"question":"🐔 मुर्गी क्या देती है?","option1":"अंडे","option2":"दूध","option3":"फल","option4":"सब्जी","answer":"option1","level":1,"hint":"नाश्ते में"},
+{"question":"🐟 मछली कहाँ रहती है?","option1":"पानी","option2":"पेड़","option3":"घर","option4":"आकाश","answer":"option1","level":1,"hint":"तालाब"},
+
+{"question":"🏫 बच्चे कहाँ पढ़ते हैं?","option1":"स्कूल","option2":"बाजार","option3":"पार्क","option4":"दुकान","answer":"option1","level":1,"hint":"पढ़ाई"},
+{"question":"🏥 बीमार लोग कहाँ जाते हैं?","option1":"अस्पताल","option2":"स्कूल","option3":"दुकान","option4":"पार्क","answer":"option1","level":1,"hint":"डॉक्टर"},
+{"question":"🛒 सामान कहाँ से खरीदते हैं?","option1":"दुकान","option2":"स्कूल","option3":"घर","option4":"पार्क","answer":"option1","level":1,"hint":"मार्केट"},
+{"question":"🌳 पेड़ हमें क्या देते हैं?","option1":"ऑक्सीजन","option2":"प्लास्टिक","option3":"लोहे","option4":"कांच","answer":"option1","level":1,"hint":"सांस"},
+{"question":"🚗 कार क्या है?","option1":"वाहन","option2":"जानवर","option3":"फल","option4":"पेड़","answer":"option1","level":1,"hint":"यात्रा"},
+
+{"question":"🐶 कुत्ता कैसा जानवर है?","option1":"पालतू","option2":"जंगली","option3":"समुद्री","option4":"उड़ने वाला","answer":"option1","level":1,"hint":"घर में"},
+{"question":"🦁 जंगल का राजा कौन है?","option1":"शेर","option2":"हाथी","option3":"बाघ","option4":"घोड़ा","answer":"option1","level":1,"hint":"ताकतवर"},
+{"question":"🐦 कौन सा पक्षी उड़ सकता है?","option1":"तोता","option2":"गाय","option3":"कुत्ता","option4":"घोड़ा","answer":"option1","level":1,"hint":"हरा पक्षी"},
+{"question":"🌧 बारिश किस मौसम में होती है?","option1":"बरसात","option2":"गर्मी","option3":"सर्दी","option4":"बसंत","answer":"option1","level":1,"hint":"छाता"},
+{"question":"❄ सर्दी में हम क्या पहनते हैं?","option1":"स्वेटर","option2":"टी-शर्ट","option3":"टोपी","option4":"जूते","answer":"option1","level":1,"hint":"गर्म कपड़े"},
+
+{"question":"🍌 केला कैसा फल है?","option1":"मीठा","option2":"खट्टा","option3":"कड़वा","option4":"तीखा","answer":"option1","level":1,"hint":"पीला"},
+{"question":"🍋 नींबू कैसा होता है?","option1":"खट्टा","option2":"मीठा","option3":"कड़वा","option4":"तीखा","answer":"option1","level":1,"hint":"खट्टा स्वाद"},
+{"question":"🍬 चीनी का स्वाद कैसा होता है?","option1":"मीठा","option2":"खट्टा","option3":"कड़वा","option4":"तीखा","answer":"option1","level":1,"hint":"मिठाई"},
+{"question":"🔥 आग कैसी होती है?","option1":"गरम","option2":"ठंडी","option3":"गीली","option4":"नरम","answer":"option1","level":1,"hint":"Heat"},
+{"question":"🧊 बर्फ कैसी होती है?","option1":"ठंडी","option2":"गरम","option3":"सूखी","option4":"नरम","answer":"option1","level":1,"hint":"Ice"},
+
+{"question":"👨‍🏫 स्कूल में पढ़ाने वाला कौन?","option1":"शिक्षक","option2":"डॉक्टर","option3":"किसान","option4":"पुलिस","answer":"option1","level":1,"hint":"Teacher"},
+{"question":"👨‍⚕️ बीमारों का इलाज कौन करता है?","option1":"डॉक्टर","option2":"किसान","option3":"माली","option4":"ड्राइवर","answer":"option1","level":1,"hint":"Hospital"},
+{"question":"👮 कानून की रक्षा कौन करता है?","option1":"पुलिस","option2":"डॉक्टर","option3":"किसान","option4":"माली","answer":"option1","level":1,"hint":"Police"},
+{"question":"🌾 खेत में काम कौन करता है?","option1":"किसान","option2":"शिक्षक","option3":"डॉक्टर","option4":"पुलिस","answer":"option1","level":1,"hint":"Food"},
+{"question":"🚒 आग बुझाने वाला कौन?","option1":"फायरमैन","option2":"डॉक्टर","option3":"किसान","option4":"माली","answer":"option1","level":1,"hint":"Fire"},
+
+{"question":"📅 एक सप्ताह में कितने दिन?","option1":"7","option2":"6","option3":"5","option4":"8","answer":"option1","level":1,"hint":"Monday-Sunday"},
+{"question":"🌈 इंद्रधनुष में कितने रंग?","option1":"7","option2":"6","option3":"5","option4":"8","answer":"option1","level":1,"hint":"Rainbow"},
+{"question":"🖐 एक हाथ में कितनी उंगलियाँ?","option1":"5","option2":"4","option3":"6","option4":"7","answer":"option1","level":1,"hint":"Hand"},
+{"question":"👀 हमारे कितनी आँखें?","option1":"2","option2":"3","option3":"4","option4":"1","answer":"option1","level":1,"hint":"Eyes"},
+{"question":"👂 हमारे कितने कान?","option1":"2","option2":"1","option3":"3","option4":"4","answer":"option1","level":1,"hint":"Ears"},
+
+{"question":"🍞 रोटी किससे बनती है?","option1":"गेहूँ","option2":"चावल","option3":"दाल","option4":"मक्का","answer":"option1","level":1,"hint":"Flour"},
+{"question":"🍚 चावल किससे बनता है?","option1":"धान","option2":"गेहूँ","option3":"दाल","option4":"मक्का","answer":"option1","level":1,"hint":"Rice"},
+{"question":"🥛 दूध किससे मिलता है?","option1":"गाय","option2":"शेर","option3":"बिल्ली","option4":"घोड़ा","answer":"option1","level":1,"hint":"Milk"},
+{"question":"🐝 शहद कौन बनाता है?","option1":"मधुमक्खी","option2":"मक्खी","option3":"तितली","option4":"चींटी","answer":"option1","level":1,"hint":"Honey"},
+{"question":"🧂 नमक का स्वाद कैसा?","option1":"नमकीन","option2":"मीठा","option3":"खट्टा","option4":"कड़वा","answer":"option1","level":1,"hint":"Salt"},
+
+{"question":"🌍 हम किस ग्रह पर रहते हैं?","option1":"पृथ्वी","option2":"मंगल","option3":"शुक्र","option4":"बृहस्पति","answer":"option1","level":1,"hint":"Earth"},
+{"question":"🌞 दिन में क्या चमकता है?","option1":"सूरज","option2":"चाँद","option3":"तारा","option4":"बादल","answer":"option1","level":1,"hint":"Sun"},
+{"question":"🌙 रात में क्या चमकता है?","option1":"चाँद","option2":"सूरज","option3":"बादल","option4":"नदी","answer":"option1","level":1,"hint":"Moon"},
+{"question":"⭐ आसमान में क्या चमकता है?","option1":"तारे","option2":"पेड़","option3":"घर","option4":"नदी","answer":"option1","level":1,"hint":"Stars"},
+{"question":"☁ आकाश में क्या तैरते हैं?","option1":"बादल","option2":"पेड़","option3":"घर","option4":"नदी","answer":"option1","level":1,"hint":"Clouds"},
+
+{"question":"📖 'माँ' शब्द में कितने अक्षर हैं?","option1":"2","option2":"3","option3":"1","option4":"4","answer":"option1","level":2,"hint":"मा + ँ"},
+{"question":"✏️ 'राम' शब्द में कितने अक्षर हैं?","option1":"2","option2":"3","option3":"4","option4":"1","answer":"option2","level":2,"hint":"र + ा + म"},
+{"question":"📚 'घर' शब्द का अर्थ क्या है?","option1":"रहने की जगह","option2":"खेलने की जगह","option3":"दुकान","option4":"स्कूल","answer":"option1","level":1,"hint":"Home"},
+{"question":"🏡 हम कहाँ रहते हैं?","option1":"घर","option2":"स्कूल","option3":"दुकान","option4":"पार्क","answer":"option1","level":1,"hint":"Home"},
+{"question":"📦 किताब कहाँ रखते हैं?","option1":"बैग","option2":"फ्रिज","option3":"बाथरूम","option4":"रसोई","answer":"option1","level":1,"hint":"School bag"},
+
+{"question":"🍏 सेब किस रंग का होता है?","option1":"लाल","option2":"नीला","option3":"काला","option4":"सफेद","answer":"option1","level":1,"hint":"Red apple"},
+{"question":"🌿 पत्तियाँ किस रंग की होती हैं?","option1":"हरी","option2":"लाल","option3":"नीली","option4":"काली","answer":"option1","level":1,"hint":"Leaf"},
+{"question":"🌊 समुद्र का पानी कैसा होता है?","option1":"नमकीन","option2":"मीठा","option3":"खट्टा","option4":"कड़वा","answer":"option1","level":1,"hint":"Sea"},
+{"question":"🚂 ट्रेन कहाँ चलती है?","option1":"पटरी","option2":"आसमान","option3":"पेड़","option4":"नदी","answer":"option1","level":1,"hint":"Railway"},
+{"question":"✈ हवाई जहाज कहाँ उड़ता है?","option1":"आसमान","option2":"नदी","option3":"पेड़","option4":"घर","answer":"option1","level":1,"hint":"Sky"},
+
+{"question":"📅 साल में कितने महीने होते हैं?","option1":"12","option2":"10","option3":"11","option4":"13","answer":"option1","level":1,"hint":"Year"},
+{"question":"⌚ एक घंटे में कितने मिनट होते हैं?","option1":"60","option2":"50","option3":"30","option4":"90","answer":"option1","level":1,"hint":"Time"},
+{"question":"🕐 एक दिन में कितने घंटे होते हैं?","option1":"24","option2":"20","option3":"12","option4":"18","answer":"option1","level":1,"hint":"Day"},
+{"question":"🪥 दाँत साफ करने के लिए क्या उपयोग करते हैं?","option1":"ब्रश","option2":"चम्मच","option3":"कप","option4":"कंघी","answer":"option1","level":1,"hint":"Toothbrush"},
+{"question":"🧴 हाथ धोने के लिए क्या उपयोग करते हैं?","option1":"साबुन","option2":"पेंसिल","option3":"किताब","option4":"बैग","answer":"option1","level":1,"hint":"Soap"}
+]
