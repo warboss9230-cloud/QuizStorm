@@ -10,7 +10,6 @@ const SUBJECTS = [
   { id: 'computer', name: 'Computer', icon: '💻', file: 'computer.json' },
   { id: 'evs',      name: 'EVS',      icon: '🌿', file: 'evs.json' },
   { id: 'gk',       name: 'GK',       icon: '🌍', file: 'gk.json' },
-  { id: 'economics',name: 'Econ',     icon: '📊', file: 'economics.json' },
   { id: 'space',    name: 'Space',    icon: '🚀', file: 'space.json' },
   { id: 'animals',  name: 'Animals',  icon: '🦁', file: 'animals.json' },
 ];
