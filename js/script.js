@@ -3,16 +3,16 @@
 
 // ===== CONSTANTS =====
 const SUBJECTS = [
-  { id: 'math',     name: 'Math',     icon: '🧮', file: 'math.json' },
-  { id: 'science',  name: 'Science',  icon: '🔬', file: 'science.json' },
-  { id: 'english',  name: 'English',  icon: '📖', file: 'english.json' },
-  { id: 'hindi',    name: 'Hindi',    icon: '🕉️', file: 'hindi.json' },
-  { id: 'computer', name: 'Computer', icon: '💻', file: 'computer.json' },
-  { id: 'evs',      name: 'EVS',      icon: '🌿', file: 'evs.json' },
-  { id: 'gk',       name: 'GK',       icon: '🌍', file: 'gk.json' },
-  { id: 'economics',name: 'Econ',     icon: '📊', file: 'economics.json' },
-  { id: 'space',    name: 'Space',    icon: '🚀', file: 'space.json' },
-  { id: 'animals',  name: 'Animals',  icon: '🦁', file: 'animals.json' },
+  { id: 'english',  name: 'English',         icon: '📚', file: 'english.json' },
+  { id: 'hindi',    name: 'Hindi',           icon: '🪔', file: 'hindi.json' },
+  { id: 'math',     name: 'Math',            icon: '➗', file: 'math.json' },
+  { id: 'science',  name: 'Science',         icon: '🔬', file: 'science.json' },
+  { id: 'computer', name: 'Computer',        icon: '💻', file: 'computer.json' },
+  { id: 'evs',      name: 'EVS',             icon: '🌳', file: 'evs.json' },
+  { id: 'animals',  name: 'Animals & Birds', icon: '🐢', file: 'animals-birds.json' },
+  { id: 'gk',       name: 'GK',              icon: '🧠', file: 'gk.json' },
+  { id: 'space',    name: 'Space',           icon: '🚀', file: 'space.json' },
+  { id: 'sports',   name: 'Sports',          icon: '⚽', file: 'sports.json' },
 ];
 
 const AVATARS = ['🦊','🐺','🦁','🐯','🐻','🐼','🐨','🦄','🐸','🐵','🦋','🐉','🦅','🦋','🌟','⚡','🔥','💎','🌈','🎯'];
